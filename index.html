@@ -316,29 +316,34 @@ if(cuota > 0){
 
             <div class="tarjeta">
 
-                <h2>Opción 7</h2>
+                <h2>Tabla de Amortización Alemana</h2>
 
                 <h3 class="subtitulo">Definición</h3>
 
                 <p>
-                    Aquí puedes agregar tu contenido.
+                    La tabla de amortización alemana es un sistema donde el capital se paga en partes iguales y las
+                    cuotas van disminuyendo con el tiempo.
                 </p>
 
                 <h3 class="subtitulo">Explicación</h3>
 
                 <p>
-                    Aquí puedes agregar tu explicación.
+                    Ejemplo: Si una persona pide un préstamo de $4000 a 4 meses, cada mes pagará la misma cantidad de
+                    capital, pero los intereses serán menores, por eso las cuotas bajan poco a poco.
                 </p>
 
                 <h3 class="subtitulo">Código Base</h3>
 
                 <pre class="codigo">
 
-for(let i = 0; i < 5; i++){
-    console.log(i);
+let capital = 4000;
+let meses = 4;
+
+for(let i = 1; i <= meses; i++){
+    console.log("Pago del mes " + i);
 }
 
-            </pre>
+        </pre>
 
             </div>
 
