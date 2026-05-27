@@ -1,191 +1,193 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="estilos.css">
-<script src="funciones.js"></script>
 
-<title>Proyecto Matematica Financiera💸</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="funciones.js"></script>
+
+    <title>Proyecto Matematica Financiera💸</title>
 
 </head>
+
 <body>
 
-<!-- ===== BOTON MENU ===== -->
+    <!-- ===== BOTON MENU ===== -->
 
-<button class="botonMenu" onclick="abrirMenu()">
-☰
-</button>
+    <button class="botonMenu" onclick="abrirMenu()">
+        ☰
+    </button>
 
-<!-- ===== MENU ===== -->
+    <!-- ===== MENU ===== -->
 
-<div class="menu" id="menu">
+    <div class="menu" id="menu">
 
-    <div class="logo">
-        MENU
+        <div class="logo">
+            MENU
+        </div>
+
+        <button onclick="mostrarSeccion('inicio')">
+            Inicio
+        </button>
+
+        <button onclick="mostrarSeccion('seccion1')">
+            Opción 1
+        </button>
+
+        <button onclick="mostrarSeccion('seccion2')">
+            Opción 2
+        </button>
+
+        <button onclick="mostrarSeccion('seccion3')">
+            Opción 3
+        </button>
+
+        <button onclick="mostrarSeccion('seccion4')">
+            Opción 4
+        </button>
+
+        <button onclick="mostrarSeccion('seccion5')">
+            Opción 5
+        </button>
+
+        <button onclick="mostrarSeccion('seccion6')">
+            Opción 6
+        </button>
+
+        <button onclick="mostrarSeccion('seccion7')">
+            Opción 7
+        </button>
+
+        <button onclick="mostrarSeccion('test')">
+            Test
+        </button>
+
     </div>
 
-    <button onclick="mostrarSeccion('inicio')">
-        Inicio
-    </button>
+    <!-- ===== CONTENIDO ===== -->
 
-    <button onclick="mostrarSeccion('seccion1')">
-        Opción 1
-    </button>
+    <div class="contenido" id="contenido">
 
-    <button onclick="mostrarSeccion('seccion2')">
-        Opción 2
-    </button>
+        <div class="titulo">
 
-    <button onclick="mostrarSeccion('seccion3')">
-        Opción 3
-    </button>
-
-    <button onclick="mostrarSeccion('seccion4')">
-        Opción 4
-    </button>
-
-    <button onclick="mostrarSeccion('seccion5')">
-        Opción 5
-    </button>
-
-    <button onclick="mostrarSeccion('seccion6')">
-        Opción 6
-    </button>
-
-    <button onclick="mostrarSeccion('seccion7')">
-        Opción 7
-    </button>
-
-    <button onclick="mostrarSeccion('test')">
-        Test
-    </button>
-
-</div>
-
-<!-- ===== CONTENIDO ===== -->
-
-<div class="contenido" id="contenido">
-
-    <div class="titulo">
-
-        <h1>Título Principal</h1>
+            <h1>Título Principal</h1>
 
         <p>
-            "Hola mundo"
+            Agrega aquí la descripción principal de tu página.
         </p>
-
-    </div>
-
-    <!-- ===== INICIO ===== -->
-
-    <section id="inicio">
-
-        <div class="tarjeta">
-
-            <h2>Bienvenido</h2>
-
-            <p>
-                Aquí puedes colocar la información principal de tu página.
-            </p>
 
         </div>
 
-    </section>
+        <!-- ===== INICIO ===== -->
 
-    <!-- ===== OPCION 1 ===== -->
+        <section id="inicio">
 
-    <section id="seccion1">
+            <div class="tarjeta">
 
-        <div class="tarjeta">
+                <h2>Bienvenido</h2>
 
-            <h2>Opción 1</h2>
+                <p>
+                    Aquí puedes colocar la información principal de tu página.
+                </p>
 
-            <h3 class="subtitulo">
-                Definición
-            </h3>
+            </div>
 
-            <p>
-                Aquí puedes escribir la definición.
-            </p>
+        </section>
 
-            <h3 class="subtitulo">
-                Explicación
-            </h3>
+        <!-- ===== OPCION 1 ===== -->
 
-            <p>
-                Aquí puedes escribir la explicación.
-            </p>
+        <section id="seccion1">
 
-            <h3 class="subtitulo">
-                Código Base
-            </h3>
+            <div class="tarjeta">
 
-            <pre class="codigo">
+                <h2>Opción 1</h2>
+
+                <h3 class="subtitulo">
+                    Definición
+                </h3>
+
+                <p>
+                    Aquí puedes escribir la definición.
+                </p>
+
+                <h3 class="subtitulo">
+                    Explicación
+                </h3>
+
+                <p>
+                    Aquí puedes escribir la explicación.
+                </p>
+
+                <h3 class="subtitulo">
+                    Código Base
+                </h3>
+
+                <pre class="codigo">
 
 &lt;h1&gt;Hola Mundo&lt;/h1&gt;
 
             </pre>
 
-        </div>
+            </div>
 
-    </section>
+        </section>
 
-    <!-- ===== OPCION 2 ===== -->
+        <!-- ===== OPCION 2 ===== -->
 
-    <section id="seccion2">
+        <section id="seccion2">
 
-        <div class="tarjeta">
+            <div class="tarjeta">
 
-            <h2>Opción 2</h2>
+                <h2>Opción 2</h2>
 
-            <h3 class="subtitulo">Definición</h3>
+                <h3 class="subtitulo">Definición</h3>
 
-            <p>
-                Aquí puedes agregar tu contenido.
-            </p>
+                <p>
+                    Aquí puedes agregar tu contenido.
+                </p>
 
-            <h3 class="subtitulo">Explicación</h3>
+                <h3 class="subtitulo">Explicación</h3>
 
-            <p>
-                Aquí puedes agregar tu explicación.
-            </p>
+                <p>
+                    Aquí puedes agregar tu explicación.
+                </p>
 
-            <h3 class="subtitulo">Código Base</h3>
+                <h3 class="subtitulo">Código Base</h3>
 
-            <pre class="codigo">
+                <pre class="codigo">
 
 console.log("Hola");
 
             </pre>
 
-        </div>
+            </div>
 
-    </section>
+        </section>
 
-    <!-- ===== OPCION 3 ===== -->
+        <!-- ===== OPCION 3 ===== -->
 
-    <section id="seccion3">
+        <section id="seccion3">
 
-        <div class="tarjeta">
+            <div class="tarjeta">
 
-            <h2>Opción 3</h2>
+                <h2>Opción 3</h2>
 
-            <h3 class="subtitulo">Definición</h3>
+                <h3 class="subtitulo">Definición</h3>
 
-            <p>
-                Aquí puedes agregar tu contenido.
-            </p>
+                <p>
+                    Aquí puedes agregar tu contenido.
+                </p>
 
-            <h3 class="subtitulo">Explicación</h3>
+                <h3 class="subtitulo">Explicación</h3>
 
-            <p>
-                Aquí puedes agregar tu explicación.
-            </p>
+                <p>
+                    Aquí puedes agregar tu explicación.
+                </p>
 
-            <h3 class="subtitulo">Código Base</h3>
+                <h3 class="subtitulo">Código Base</h3>
 
-            <pre class="codigo">
+                <pre class="codigo">
 
 body{
     background:black;
@@ -193,33 +195,33 @@ body{
 
             </pre>
 
-        </div>
+            </div>
 
-    </section>
+        </section>
 
-    <!-- ===== OPCION 4 ===== -->
+        <!-- ===== OPCION 4 ===== -->
 
-    <section id="seccion4">
+        <section id="seccion4">
 
-        <div class="tarjeta">
+            <div class="tarjeta">
 
-            <h2>Opción 4</h2>
+                <h2>Opción 4</h2>
 
-            <h3 class="subtitulo">Definición</h3>
+                <h3 class="subtitulo">Definición</h3>
 
-            <p>
-                Aquí puedes agregar tu contenido.
-            </p>
+                <p>
+                    Aquí puedes agregar tu contenido.
+                </p>
 
-            <h3 class="subtitulo">Explicación</h3>
+                <h3 class="subtitulo">Explicación</h3>
 
-            <p>
-                Aquí puedes agregar tu explicación.
-            </p>
+                <p>
+                    Aquí puedes agregar tu explicación.
+                </p>
 
-            <h3 class="subtitulo">Código Base</h3>
+                <h3 class="subtitulo">Código Base</h3>
 
-            <pre class="codigo">
+                <pre class="codigo">
 
 function saludar(){
     alert("Hola");
@@ -227,33 +229,35 @@ function saludar(){
 
             </pre>
 
-        </div>
+            </div>
 
-    </section>
+        </section>
 
-    <!-- ===== OPCION 5 ===== -->
+        <!-- ===== OPCION 5 ===== -->
 
-    <section id="seccion5">
+        <section id="seccion5">
 
-    <div class="tarjeta">
+            <div class="tarjeta">
 
-        <h2>Cuotas y Pagos Periódicos</h2>
+                <h2>Cuotas y Pagos Periódicos</h2>
 
-        <h3 class="subtitulo">Definición</h3>
+                <h3 class="subtitulo">Definición</h3>
 
-        <p>
-            Las cuotas y pagos periódicos son cantidades de dinero que se pagan en tiempos establecidos, por ejemplo cada mes o cada semana.
-        </p>
+                <p>
+                    Las cuotas y pagos periódicos son cantidades de dinero que se pagan en tiempos establecidos, por
+                    ejemplo cada mes o cada semana.
+                </p>
 
-        <h3 class="subtitulo">Explicación</h3>
+                <h3 class="subtitulo">Explicación</h3>
 
-        <p>
-            Ejemplo: Si una persona compra una computadora en $1200 y decide pagarla en 12 meses, deberá pagar una cuota mensual de $100.
-        </p>
+                <p>
+                    Ejemplo: Si una persona compra una computadora en $1200 y decide pagarla en 12 meses, deberá pagar
+                    una cuota mensual de $100.
+                </p>
 
-        <h3 class="subtitulo">Código Base</h3>
+                <h3 class="subtitulo">Código Base</h3>
 
-        <pre class="codigo">
+                <pre class="codigo">
 
 let cuotaMensual = 100;
 let meses = 12;
@@ -264,67 +268,71 @@ console.log("Total a pagar: $" + totalPagar);
 
         </pre>
 
-    </div>
+            </div>
 
-</section>
+        </section>
 
-    <!-- ===== OPCION 6 ===== -->
+        <!-- ===== OPCION 6 ===== -->
 
-    <section id="seccion6">
+        <section id="seccion6">
 
-        <div class="tarjeta">
+            <div class="tarjeta">
 
-            <h2>Opción 6</h2>
+                <h2>Tabla de Amortización Francesa</h2>
 
-            <h3 class="subtitulo">Definición</h3>
+                <h3 class="subtitulo">Definición</h3>
 
-            <p>
-                Aquí puedes agregar tu contenido.
-            </p>
+                <p>
+                    La tabla de amortización francesa es un sistema de pago donde las cuotas son iguales durante todo el
+                    préstamo.
+                </p>
 
-            <h3 class="subtitulo">Explicación</h3>
+                <h3 class="subtitulo">Explicación</h3>
 
-            <p>
-                Aquí puedes agregar tu explicación.
-            </p>
+                <p>
+                    Ejemplo: Si una persona solicita un préstamo de $5000 a 10 meses, pagará la misma cuota cada mes
+                    hasta terminar de cancelar la deuda.
+                </p>
 
-            <h3 class="subtitulo">Código Base</h3>
+                <h3 class="subtitulo">Código Base</h3>
 
-            <pre class="codigo">
+                <pre class="codigo">
 
-if(true){
-    console.log("Correcto");
+let cuota = 250;
+
+if(cuota > 0){
+    console.log("La cuota mensual es: $" + cuota);
 }
 
-            </pre>
+        </pre>
 
-        </div>
+            </div>
 
-    </section>
+        </section>
 
-    <!-- ===== OPCION 7 ===== -->
+        <!-- ===== OPCION 7 ===== -->
 
-    <section id="seccion7">
+        <section id="seccion7">
 
-        <div class="tarjeta">
+            <div class="tarjeta">
 
-            <h2>Opción 7</h2>
+                <h2>Opción 7</h2>
 
-            <h3 class="subtitulo">Definición</h3>
+                <h3 class="subtitulo">Definición</h3>
 
-            <p>
-                Aquí puedes agregar tu contenido.
-            </p>
+                <p>
+                    Aquí puedes agregar tu contenido.
+                </p>
 
-            <h3 class="subtitulo">Explicación</h3>
+                <h3 class="subtitulo">Explicación</h3>
 
-            <p>
-                Aquí puedes agregar tu explicación.
-            </p>
+                <p>
+                    Aquí puedes agregar tu explicación.
+                </p>
 
-            <h3 class="subtitulo">Código Base</h3>
+                <h3 class="subtitulo">Código Base</h3>
 
-            <pre class="codigo">
+                <pre class="codigo">
 
 for(let i = 0; i < 5; i++){
     console.log(i);
@@ -332,108 +340,109 @@ for(let i = 0; i < 5; i++){
 
             </pre>
 
-        </div>
+            </div>
 
-    </section>
+        </section>
 
-    <!-- ===== TEST ===== -->
+        <!-- ===== TEST ===== -->
 
-    <section id="test">
+        <section id="test">
 
-        <div class="tarjeta">
+            <div class="tarjeta">
 
-            <h2>Test</h2>
+                <h2>Test</h2>
 
-            <div class="pregunta">
+                <div class="pregunta">
 
-                <h3>1. Pregunta 1</h3>
+                    <h3>1. Pregunta 1</h3>
 
-                <label>
-                    <input type="radio" name="p1" value="v">
-                    Verdadero
-                </label>
+                    <label>
+                        <input type="radio" name="p1" value="v">
+                        Verdadero
+                    </label>
 
-                <label>
-                    <input type="radio" name="p1" value="f">
-                    Falso
-                </label>
+                    <label>
+                        <input type="radio" name="p1" value="f">
+                        Falso
+                    </label>
+
+                </div>
+
+                <div class="pregunta">
+
+                    <h3>2. Pregunta 2</h3>
+
+                    <label>
+                        <input type="radio" name="p2" value="v">
+                        Verdadero
+                    </label>
+
+                    <label>
+                        <input type="radio" name="p2" value="f">
+                        Falso
+                    </label>
+
+                </div>
+
+                <div class="pregunta">
+
+                    <h3>3. Pregunta 3</h3>
+
+                    <label>
+                        <input type="radio" name="p3" value="v">
+                        Verdadero
+                    </label>
+
+                    <label>
+                        <input type="radio" name="p3" value="f">
+                        Falso
+                    </label>
+
+                </div>
+
+                <div class="pregunta">
+
+                    <h3>4. Pregunta 4</h3>
+
+                    <label>
+                        <input type="radio" name="p4" value="v">
+                        Verdadero
+                    </label>
+
+                    <label>
+                        <input type="radio" name="p4" value="f">
+                        Falso
+                    </label>
+
+                </div>
+
+                <div class="pregunta">
+
+                    <h3>5. Pregunta 5</h3>
+
+                    <label>
+                        <input type="radio" name="p5" value="v">
+                        Verdadero
+                    </label>
+
+                    <label>
+                        <input type="radio" name="p5" value="f">
+                        Falso
+                    </label>
+
+                </div>
+
+                <button class="btn" onclick="calificar()">
+                    Calificar
+                </button>
+
+                <div id="resultado"></div>
 
             </div>
 
-            <div class="pregunta">
+        </section>
 
-                <h3>2. Pregunta 2</h3>
-
-                <label>
-                    <input type="radio" name="p2" value="v">
-                    Verdadero
-                </label>
-
-                <label>
-                    <input type="radio" name="p2" value="f">
-                    Falso
-                </label>
-
-            </div>
-
-            <div class="pregunta">
-
-                <h3>3. Pregunta 3</h3>
-
-                <label>
-                    <input type="radio" name="p3" value="v">
-                    Verdadero
-                </label>
-
-                <label>
-                    <input type="radio" name="p3" value="f">
-                    Falso
-                </label>
-
-            </div>
-
-            <div class="pregunta">
-
-                <h3>4. Pregunta 4</h3>
-
-                <label>
-                    <input type="radio" name="p4" value="v">
-                    Verdadero
-                </label>
-
-                <label>
-                    <input type="radio" name="p4" value="f">
-                    Falso
-                </label>
-
-            </div>
-
-            <div class="pregunta">
-
-                <h3>5. Pregunta 5</h3>
-
-                <label>
-                    <input type="radio" name="p5" value="v">
-                    Verdadero
-                </label>
-
-                <label>
-                    <input type="radio" name="p5" value="f">
-                    Falso
-                </label>
-
-            </div>
-
-            <button class="btn" onclick="calificar()">
-                Calificar
-            </button>
-
-            <div id="resultado"></div>
-
-        </div>
-
-    </section>
-
-</div>
+    </div>
 </body>
+
 </html>
