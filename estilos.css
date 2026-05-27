@@ -150,8 +150,8 @@ section{
 
 .subtitulo{
     color:#38bdf8;
-    margin-top:20px;
-    margin-bottom:10px;
+    margin-top:15px;
+    margin-bottom:8px;
     position:relative;
     z-index:2;
 }
@@ -161,6 +161,8 @@ section{
     color:#d1d5db;
     position:relative;
     z-index:2;
+    margin-bottom:10px;
+
 }
 
 .codigo{
@@ -247,4 +249,9 @@ section{
         font-size:35px;
     }
 
+}
+
+.tarjeta ul{
+    margin-left:20px;
+    margin-bottom:10px;
 }
