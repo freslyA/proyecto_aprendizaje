@@ -43,7 +43,7 @@ function calificar(){
         puntos++;
     }
 
-    if(p2 && p2.value == "f"){
+    if(p2 && p2.value == "v"){
         puntos++;
     }
 
@@ -51,11 +51,11 @@ function calificar(){
         puntos++;
     }
 
-    if(p4 && p4.value == "f"){
+    if(p4 && p4.value == "v"){
         puntos++;
     }
 
-    if(p5 && p5.value == "v"){
+    if(p5 && p5.value == "f"){
         puntos++;
     }
 
