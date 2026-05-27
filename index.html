@@ -30,7 +30,7 @@
     </button>
 
     <button onclick="mostrarSeccion('seccion1')">
-        Opción 1
+        Valor Presente
     </button>
 
     <button onclick="mostrarSeccion('seccion2')">
@@ -99,22 +99,43 @@
 
         <div class="tarjeta">
 
-            <h2>Opción 1</h2>
+            <h2>VALOR PRESENTE</h2>
 
             <h3 class="subtitulo">
-                Definición
+                Definición 
             </h3>
-
+                
             <p>
-                Aquí puedes escribir la definición.
+               Es un método de la mátematica financiera que permite determinar
+                el valor actual de una cantidad de dinero que se recibirá o pagará en el futuro, 
+                considerando factores con la inflación, tase de interés y las opiortunidades de inversión.
+                su objetivo es determinar el equivalente actual de un valor futuro, tomando en cuenta el dinero que 
+                tiene diferente valor segun el momento en que se utilice. 
             </p>
+                <p>Su formula es: VP = VF / (1 + i)^n</p>
 
             <h3 class="subtitulo">
                 Explicación
             </h3>
 
             <p>
-                Aquí puedes escribir la explicación.
+                Una empresa recibira $15000 dentro de 3 años por una inverion realizada. si la tasa
+                de interez anual es del 8%, se desea conocer cual es el valor presente de ese dinero.
+            </p><p>
+                Datos:
+            </p><p>
+                <li>Valor futuro (VF) = $15000 <br></li>
+                <li>Tasa de interés (i) = 8% o 0.08<br></li>
+                <li>Tiempo (n) = 3 años</li>
+            </p><p>
+                Aplicando la formula:
+            </p><p>
+                <li>VP = $15000 / (1 + 0.08)^3<br></li>
+                <li>Resultado: VP = $11938.25<br></li>
+            </p><p>
+            Esto significa que recibir $15,000 dentro de 3 años equivale aproximadamente 
+            a tener $11 ,907.49 en la actualidad, considerando una tasa de interés anual del 8%.
+
             </p>
 
             <h3 class="subtitulo">
@@ -122,9 +143,12 @@
             </h3>
 
             <pre class="codigo">
-
-&lt;h1&gt;Hola Mundo&lt;/h1&gt;
-
+let valor Futuro = 15000;
+let tasaInteres = 0.08;
+let tiempo = 3;
+            <p></p>
+let valorPresente = valorFuturo / Math.pow(1 + tasaInteres, tiempo);
+console.log("Valor Presente: $" + valorPresente.toFixed(2));
             </pre>
 
         </div>
