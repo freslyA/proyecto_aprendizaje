@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
     <script src="funciones.js"></script>
+    <script src="utilitarios.js"></script>
 
     <title>Proyecto Matematica Financiera💸</title>
 
@@ -57,6 +58,10 @@
 
         <button onclick="mostrarSeccion('seccion7')">
             Tabla de Amortización Alemana
+        </button>
+
+        <button onclick="mostrarSeccion('calculadoras')">
+            Calculadoras
         </button>
 
         <button onclick="mostrarSeccion('test')">
@@ -169,13 +174,13 @@ console.log("Valor Presente: $" + valorPresente.toFixed(2));
             </h3>
 
             <p>
-                El valor futuro es un concepto de la matemática financiera que permite calcular cuánto
+                Es un concepto de la matemática financiera que permite calcular cuánto
                 valrá una cantidad de dinero en el futuro después de haber generado intereses durante
                 un determinado período de tiempo. Este cálculo es utilizado para analizar inversiones,
                 ahorros y capitales que aumentan su valor con el paso del tiempo.
             </p>
             <p>
-                Su formula es: VF = VP * (1 + i)^n
+                Su formula es: VF = C * (1 + i)^n
             </p>
             <p>
                 Una persona deposita $8,000 en una cuenta bancaria que ofrece una tasa de interés anual
@@ -186,7 +191,7 @@ console.log("Valor Presente: $" + valorPresente.toFixed(2));
                 Datos:
             </p>
             <p>
-                <li>Valor presente (VP) = $8,000 <br></li>
+                <li>Capital (C) = $8,000 <br></li>
                 <li>Tasa de interés (i) = 6% o 0.06<br></li>
                 <li>Tiempo (n) = 4 años</li>
             </p>
@@ -195,23 +200,24 @@ console.log("Valor Presente: $" + valorPresente.toFixed(2));
             </p>
             <p>
                 <li>VF = $8,000 * (1 + 0.06)^4<br></li>
-                <li>Resultado: VF = $10,092.80<br></li>
+                <li>Resultado: VF = $10,099.82<br></li>
             </p>
             <p>
                 Esto significa que tener $8,000 en la actualidad equivale aproximadamente
-                a tener $10,092.80 dentro de 4 años, considerando una tasa de interés anual del 6%.
+                a tener $10,099.82 dentro de 4 años, considerando una tasa de interés anual del 6%.
 
             </p>
 
             <div class="tarjeta">
 
                 <pre class="codigo">
-let valorFuturo = 8000 ;
+let capitalInicial = 8000;
+let valorFuturo = 0;
 let tasaInteres = 0.06;
 let tiempo = 4;
 
             <p></p>
-let valorFuturo = valorPresente * Math.pow(1 + tasaInteres, tiempo);
+let valorFuturo = capitalInicial * Math.pow((1 + tasaInteres), tiempo);
 console.log("Valor Futuro: $" + valorFuturo.toFixed(2));
 
             </pre>
@@ -466,6 +472,34 @@ for(let i = 1; i <= meses; i++){
         </div>
 
     </section>
+
+<!-- ===== CALCULADORAS ===== -->
+
+    <section id="calculadoras">
+
+    <div class="contenedorCalculadoras">
+
+        <!-- valor futuro -->
+
+        <div class="tarjetaCalculadora">
+
+            <h2>Valor Futuro</h2>
+
+            <input type="number" id="txtCapitalVF" placeholder="Capital Inicial">
+            <input type="number" id="txtInteresVF" placeholder="Tasa de Interés">
+            <input type="number" id="txtTiempoVF" placeholder="Tiempo en años">
+
+            <button onclick="calcularValorFuturo()">
+                Calcular
+            </button>
+
+            <p id="lblResultadoVF"></p>
+
+        </div>
+
+    </div>
+
+</section>
 
     <!-- ===== TEST ===== -->
 
