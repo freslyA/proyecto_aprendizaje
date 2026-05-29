@@ -285,31 +285,55 @@ console.log("Interés: $" + interes.toFixed(2));
 
         <!-- ===== OPCION 4 ===== -->
 
-        <section id="seccion4">
+         <section id="seccion3">
 
             <div class="tarjeta">
 
-                <h2>Opción 4</h2>
+            <h2>Interes compuesto</h2>
 
-                <h3 class="subtitulo">Definición</h3>
+            <h3 class="subtitulo">
+                Definición 
+            </h3>
+                
+            <p>
+                El interés compuesto es un método de cálculo financiero en el cual los intereses 
+                generados se suman al capital inicial, permitiendo que en cada período se generen 
+                nuevos intereses sobre el monto acumulado. Este proceso provoca un crecimiento 
+                progresivo del dinero con el paso del tiempo.
 
-                <p>
-                    Aquí puedes agregar tu contenido.
-                </p>
+                El interés compuesto es ampliamente utilizado en inversiones, cuentas de ahorro, 
+                créditos bancarios y financiamiento empresarial, debido a que permite incrementar 
+                el capital de manera más rápida que el interés simple.          
+            </p><p>
+                Su formula es: M = C * (1 + i)^n
+            </p><p>
+                Una persona invierte $10,000 en una entidad financiera que ofrece una tasa de interés 
+                compuesto anual del 12% durante 4 años. Se desea calcular el monto acumulado al finalizar el período.              
+            </p><p>
+                Datos:
+            </p><p>
+                <li>Capital (C) = $10,000 <br></li>
+                <li>Tasa de interés (i) = 12% o 0.12<br></li>
+                <li>Tiempo (t) = 4 años</li>
+            </p><p>
+                Aplicando la formula:
+            </p><p>
+                <li>M = $10,000 * (1 + 0.12)^4<br></li>
+                <li>Resultado: M = $15,748.29<br></li>
+            </p><p>
+                Esto significa que la persona obtendrá un monto acumulado de $15,748.29 al finalizar los 4 años.
+            </p>
 
-                <h3 class="subtitulo">Explicación</h3>
+            <div class="tarjeta">
 
-                <p>
-                    Aquí puedes agregar tu explicación.
-                </p>
+            <pre class="codigo">
+let capitalInicial = 10000;
+let tasaInteres = 0.12;
+let tiempo = 4;
 
-                <h3 class="subtitulo">Código Base</h3>
-
-                <pre class="codigo">
-
-function saludar(){
-    alert("Hola");
-}
+            <p></p>
+let monto = capitalInicial * Math.pow(1 + tasaInteres, tiempo);
+console.log("Monto: $" + monto.toFixed(2));
 
             </pre>
 
