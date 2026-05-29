@@ -118,3 +118,56 @@ function calcularInteresCompuesto(){
     mostrarTexto("lblResultadoIC", "Monto Final: $" + montoFinal.toFixed(2));
 
 }
+// TEMA 5
+function calcularCuotas() {
+
+    let prestamo = recuperarFloat("txtPrestamoCPP");
+    let interes = recuperarFloat("txtInteresCPP") / 100;
+    let cuotas = recuperarInt("txtMesesCPP");
+
+    let pago = (prestamo * interes) /
+        (1 - Math.pow(1 + interes, -cuotas));
+
+    mostrarTexto(
+        "lblResultadoCPP",
+        "Pago mensual: $" + pago.toFixed(2)
+    );
+}
+
+
+
+// TEMA 6
+function calcularFrancesa() {
+
+    let monto = recuperarFloat("txtMontoAF");
+    let interes = recuperarFloat("txtInteresAF") / 100;
+    let cuotas = recuperarInt("txtCuotasAF");
+
+    let pago = (monto * interes) /
+        (1 - Math.pow(1 + interes, -cuotas));
+
+    mostrarTexto(
+        "lblResultadoAF",
+        "Cuota fija mensual: $" + pago.toFixed(2)
+    );
+}
+
+
+
+// TEMA 7
+function calcularAlemana() {
+
+    let monto = recuperarFloat("txtMontoAL");
+    let interes = recuperarFloat("txtInteresAL") / 100;
+    let cuotas = recuperarInt("txtCuotasAL");
+
+    let amortizacion = monto / cuotas;
+
+    let primerPago =
+        amortizacion + (monto * interes);
+
+    mostrarTexto(
+        "lblResultadoAL",
+        "Primer pago mensual: $" + primerPago.toFixed(2)
+    );
+}

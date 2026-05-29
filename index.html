@@ -76,7 +76,7 @@
 
         <h1>Matemática Financiera💸</h1>
 
-        
+
 
     </div>
 
@@ -240,7 +240,8 @@ console.log("Valor Futuro: $" + valorFuturo.toFixed(2));
 
             <p>
                 Es un método de cálculo financiero en el cual los intereses se generan únicamente sobre
-                el capital inicial durante un período determinado. A diferencia del interés compuesto, los intereses no se
+                el capital inicial durante un período determinado. A diferencia del interés compuesto, los intereses no
+                se
                 acumulan al capital, por lo que el monto ganado o pagado se mantiene constante en cada período.
 
                 Este tipo de interés es utilizado comúnmente en préstamos a corto plazo, inversiones básicas y
@@ -473,87 +474,145 @@ for(let i = 1; i <= meses; i++){
 
     </section>
 
-<!-- ===== CALCULADORAS ===== -->
+    <!-- ===== CALCULADORAS ===== -->
 
     <section id="calculadoras">
+        <div class="tarjeta">
+            <div class="contenedorCalculadoras">
 
-    <div class="contenedorCalculadoras">
+                <!-- valor presente -->
 
-        <!-- valor presente -->
+                <div class="tarjetaCalculadora">
 
-        <div class="tarjetaCalculadora">
+                    <h2>Valor Presente</h2>
 
-            <h2>Valor Presente</h2>
+                    <input type="number" id="txtValorFuturoVP" placeholder="Valor Futuro">
+                    <input type="number" id="txtInteresVP" placeholder="Tasa de Interés">
+                    <input type="number" id="txtTiempoVP" placeholder="Tiempo en años">
 
-            <input type="number" id="txtValorFuturoVP" placeholder="Valor Futuro">
-            <input type="number" id="txtInteresVP" placeholder="Tasa de Interés">
-            <input type="number" id="txtTiempoVP" placeholder="Tiempo en años">
+                    <button onclick="calcularValorPresente()">
+                        Calcular
+                    </button>
 
-            <button onclick="calcularValorPresente()">
-                Calcular
-            </button>
+                    <p id="lblResultadoVP"></p>
 
-            <p id="lblResultadoVP"></p>
+                </div>
 
+                <!-- valor futuro -->
+
+                <div class="tarjetaCalculadora">
+
+                    <h2>Valor Futuro</h2>
+
+                    <input type="number" id="txtCapitalInicialVF" placeholder="Capital Inicial">
+                    <input type="number" id="txtInteresVF" placeholder="Tasa de Interés">
+                    <input type="number" id="txtTiempoVF" placeholder="Tiempo en años">
+
+                    <button onclick="calcularValorFuturo()">
+                        Calcular
+                    </button>
+
+                    <p id="lblResultadoVF"></p>
+
+                </div>
+
+                <!-- interes simple -->
+
+                <div class="tarjetaCalculadora">
+
+                    <h2>Interés Simple</h2>
+
+                    <input type="number" id="txtCapitalIS" placeholder="Capital Inicial">
+                    <input type="number" id="txtInteresIS" placeholder="Tasa de Interés">
+                    <input type="number" id="txtTiempoIS" placeholder="Tiempo en años">
+
+                    <button onclick="calcularInteresSimple()">
+                        Calcular
+                    </button>
+
+                    <p id="lblResultadoIS"></p>
+
+                </div>
+
+                <!-- interes compuesto -->
+
+                <div class="tarjetaCalculadora">
+
+                    <h2>Interés Compuesto</h2>
+
+                    <input type="number" id="txtCapitalIC" placeholder="Capital Inicial">
+                    <input type="number" id="txtInteresIC" placeholder="Tasa de Interés">
+                    <input type="number" id="txtTiempoIC" placeholder="Tiempo en años">
+
+                    <button onclick="calcularInteresCompuesto()">
+                        Calcular
+                    </button>
+
+                    <p id="lblResultadoIC"></p>
+
+                </div>
+                <!-- TEMA 5 : CUOTAS Y PAGOS PERIÓDICOS -->
+
+                <div class="tarjetaCalculadora">
+
+                    <h2>Cuotas y Pagos Periódicos</h2>
+
+                    <input type="number" id="txtPrestamoCPP" placeholder="Monto del préstamo">
+                    <input type="number" id="txtInteresCPP" placeholder="Interés mensual">
+                    <input type="number" id="txtMesesCPP" placeholder="Número de cuotas">
+
+                    <button onclick="calcularCuotas()">
+                        Calcular
+                    </button>
+
+                    <p id="lblResultadoCPP"></p>
+
+                </div>
+
+
+
+                <!-- TEMA 6 : TABLA DE AMORTIZACIÓN FRANCESA -->
+
+                <div class="tarjetaCalculadora">
+
+                    <h2>Amortización Francesa</h2>
+
+                    <input type="number" id="txtMontoAF" placeholder="Monto del préstamo">
+                    <input type="number" id="txtInteresAF" placeholder="Interés mensual">
+                    <input type="number" id="txtCuotasAF" placeholder="Número de cuotas">
+
+                    <button onclick="calcularFrancesa()">
+                        Calcular
+                    </button>
+
+                    <p id="lblResultadoAF"></p>
+
+                </div>
+
+
+
+                <!-- TEMA 7 : TABLA DE AMORTIZACIÓN ALEMANA -->
+
+                <div class="tarjetaCalculadora">
+
+                    <h2>Amortización Alemana</h2>
+
+                    <input type="number" id="txtMontoAL" placeholder="Monto del préstamo">
+                    <input type="number" id="txtInteresAL" placeholder="Interés mensual">
+                    <input type="number" id="txtCuotasAL" placeholder="Número de cuotas">
+
+                    <button onclick="calcularAlemana()">
+                        Calcular
+                    </button>
+
+                    <p id="lblResultadoAL"></p>
+
+                </div>
+
+            </div>
         </div>
 
-        <!-- valor futuro -->
-
-        <div class="tarjetaCalculadora">
-
-            <h2>Valor Futuro</h2>
-
-            <input type="number" id="txtCapitalInicialVF" placeholder="Capital Inicial">
-            <input type="number" id="txtInteresVF" placeholder="Tasa de Interés">
-            <input type="number" id="txtTiempoVF" placeholder="Tiempo en años">
-
-            <button onclick="calcularValorFuturo()">
-                Calcular
-            </button>
-
-            <p id="lblResultadoVF"></p>
-
-        </div>
-
-        <!-- interes simple -->
-
-        <div class="tarjetaCalculadora">
-
-            <h2>Interés Simple</h2>
-
-            <input type="number" id="txtCapitalIS" placeholder="Capital Inicial">
-            <input type="number" id="txtInteresIS" placeholder="Tasa de Interés">
-            <input type="number" id="txtTiempoIS" placeholder="Tiempo en años">
-
-            <button onclick="calcularInteresSimple()">
-                Calcular
-            </button>
-
-            <p id="lblResultadoIS"></p>
-
-        </div>
-
-        <!-- interes compuesto -->
-
-        <div class="tarjetaCalculadora">
-
-            <h2>Interés Compuesto</h2>
-
-            <input type="number" id="txtCapitalIC" placeholder="Capital Inicial">
-            <input type="number" id="txtInteresIC" placeholder="Tasa de Interés">
-            <input type="number" id="txtTiempoIC"  placeholder="Tiempo en años">
-
-            <button onclick="calcularInteresCompuesto()">
-                Calcular
-            </button>
-
-            <p id="lblResultadoIC"></p>
-
-        </div>
-
-    </div>
-
-</section>
+    </section>
 
 
     <!-- ===== TEST ===== -->
