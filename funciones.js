@@ -63,3 +63,16 @@ function calificar(){
     "Tu nota es: " + puntos + " / 5";
 
 }
+
+function calcularValorFuturo(){
+
+    let vf = 0;
+    let interes = recuperarFloat("txtInteresVF");
+    let tiempo = recuperarFloat("txtTiempoVF");
+    let capitalInicial = recuperarFloat("txtCapitalInicialVF");
+
+    vf = capitalInicial * Math.pow((1 + interes), tiempo);
+
+    mostrarTexto("lblResultadoVF", "Valor Futuro: $" + vf.toFixed(2));
+
+}
