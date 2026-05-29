@@ -64,22 +64,15 @@ function calificar(){
 
 }
 
-//Calculadoras
-
-//Valor Futuro
-
 function calcularValorFuturo(){
 
-    let capital;
-    let interes;
-    let tiempo;
-    let valorFuturo;
+    let vf = 0;
+    let interes = recuperarFloat("txtInteresVF");
+    let tiempo = recuperarFloat("txtTiempoVF");
+    let capitalInicial = recuperarFloat("txtCapitalInicialVF");
 
-    capital = recuperarFloat("txtCapitalVF");
-    interes = recuperarFloat("txtInteresVF");
-    tiempo = recuperarFloat("txtTiempoVF");
-    valorFuturo = capital * Math.pow((1 + interes), tiempo);
+    vf = capitalInicial * Math.pow((1 + interes), tiempo);
 
-    mostrarTexto("lblResultadoVF", "Valor Futuro: $" + valorFuturo.toFixed(2) );
+    mostrarTexto("lblResultadoVF", "Valor Futuro: $" + vf.toFixed(2));
 
 }
