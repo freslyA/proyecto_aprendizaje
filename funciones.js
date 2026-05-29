@@ -64,6 +64,22 @@ function calificar(){
 
 }
 
+function calcularValorPresente(){
+
+    let vp = 0;
+    let valorFuturo = recuperarFloat("txtValorFuturoVP");
+    let interes = recuperarFloat("txtInteresVP");
+    let tiempo = recuperarFloat("txtTiempoVP");
+
+    vp = valorFuturo / Math.pow((1 + interes), tiempo);
+
+    mostrarTexto(
+        "lblResultadoVP",
+        "Valor Presente: $" + vp.toFixed(2)
+    );
+
+}
+
 function calcularValorFuturo(){
 
     let vf = 0;
@@ -74,5 +90,18 @@ function calcularValorFuturo(){
     vf = capitalInicial * Math.pow((1 + interes), tiempo);
 
     mostrarTexto("lblResultadoVF", "Valor Futuro: $" + vf.toFixed(2));
+
+}
+
+function calcularInteresSimple(){
+
+    let interesSimple = 0;
+    let capital = recuperarFloat("txtCapitalIS");
+    let interes = recuperarFloat("txtInteresIS");
+    let tiempo = recuperarFloat("txtTiempoIS");
+
+    interesSimple = capital * interes * tiempo;
+
+    mostrarTexto("lblResultadoIS", "Interés Simple: $" + interesSimple.toFixed(2));
 
 }

@@ -145,14 +145,14 @@
             </p>
 
             <div class="tarjeta">
-
+                <h3 class="subtitulo">Código Base</h3>
                 <pre class="codigo">
-let valorPresente = 15000;
+let valorFuturo = 15000;
 let tasaInteres = 0.08;
 let tiempo = 3;
 
             <p></p>
-let valorPresente = valorFuturo / Math.pow(1 + tasaInteres, tiempo);
+let valorPresente = valorFuturo / Math.pow((1 + tasaInteres), tiempo);
 console.log("Valor Presente: $" + valorPresente.toFixed(2));
 
             </pre>
@@ -182,6 +182,7 @@ console.log("Valor Presente: $" + valorPresente.toFixed(2));
             <p>
                 Su formula es: VF = C * (1 + i)^n
             </p>
+            <h3 class="subtitulo">Ejemplo</h3>
             <p>
                 Una persona deposita $8,000 en una cuenta bancaria que ofrece una tasa de interés anual
                 del 6% durante 4 años. Se desea conocer cuánto dinero tendrá al finalizar ese tiempo. </p>
@@ -207,9 +208,8 @@ console.log("Valor Presente: $" + valorPresente.toFixed(2));
                 a tener $10,099.82 dentro de 4 años, considerando una tasa de interés anual del 6%.
 
             </p>
-
             <div class="tarjeta">
-
+                <h3 class="subtitulo">Código Base</h3>
                 <pre class="codigo">
 let capitalInicial = 8000;
 let valorFuturo = 0;
@@ -239,10 +239,8 @@ console.log("Valor Futuro: $" + valorFuturo.toFixed(2));
             </h3>
 
             <p>
-                El interés simple es un método de cálculo financiero en el cual los intereses se generan únicamente
-                sobre
-                el capital inicial durante un período determinado. A diferencia del interés compuesto, los intereses no
-                se
+                El interés simple es un método de cálculo financiero en el cual los intereses se generan únicamente sobre
+                el capital inicial durante un período determinado. A diferencia del interés compuesto, los intereses no se
                 acumulan al capital, por lo que el monto ganado o pagado se mantiene constante en cada período.
 
                 Este tipo de interés es utilizado comúnmente en préstamos a corto plazo, inversiones básicas y
@@ -250,8 +248,9 @@ console.log("Valor Futuro: $" + valorFuturo.toFixed(2));
                 financieras simples.
             </p>
             <p>
-                Su formula es: I = C * i * t
+                Su formula es: IS = C * i * t
             </p>
+            <h3 class="subtitulo">Ejemplo</h3>
             <p>
                 Una persona solicita un préstamo de $12,000 con una tasa de interés simple anual del 9% durante 3 años.
                 Se desea calcular cuánto interés deberá pagar al finalizar el período. </p>
@@ -267,8 +266,8 @@ console.log("Valor Futuro: $" + valorFuturo.toFixed(2));
                 Aplicando la formula:
             </p>
             <p>
-                <li>I = $12,000 * 0.09 * 3<br></li>
-                <li>Resultado: I = $3,240<br></li>
+                <li>IS = $12,000 * 0.09 * 3<br></li>
+                <li>Resultado: IS = $3,240<br></li>
             </p>
             <p>
                 Esto significa que la persona deberá pagar $3,240 de interés al finalizar los 3 años, además del capital
@@ -276,15 +275,15 @@ console.log("Valor Futuro: $" + valorFuturo.toFixed(2));
             </p>
 
             <div class="tarjeta">
-
+                <h3 class="subtitulo">Código Base</h3>
                 <pre class="codigo">
 let capitalInicial = 12000;
 let tasaInteres = 0.09;
 let tiempo = 3;
 
             <p></p>
-let interes = capitalInicial * tasaInteres * tiempo;
-console.log("Interés: $" + interes.toFixed(2));
+let interesSimple = capitalInicial * tasaInteres * tiempo;
+console.log("Interés Simple: $" + interesSimple.toFixed(2));
 
             </pre>
 
@@ -317,6 +316,7 @@ console.log("Interés: $" + interes.toFixed(2));
             <p>
                 Su formula es: M = C * (1 + i)^n
             </p>
+            <h3 class="subtitulo">Ejemplo</h3>
             <p>
                 Una persona invierte $10,000 en una entidad financiera que ofrece una tasa de interés
                 compuesto anual del 12% durante 4 años. Se desea calcular el monto acumulado al finalizar el período.
@@ -479,6 +479,24 @@ for(let i = 1; i <= meses; i++){
 
     <div class="contenedorCalculadoras">
 
+        <!-- valor presente -->
+
+        <div class="tarjetaCalculadora">
+
+            <h2>Valor Presente</h2>
+
+            <input type="number" id="txtValorFuturoVP" placeholder="Valor Futuro">
+            <input type="number" id="txtInteresVP" placeholder="Tasa de Interés">
+            <input type="number" id="txtTiempoVP" placeholder="Tiempo en años">
+
+            <button onclick="calcularValorPresente()">
+                Calcular
+            </button>
+
+            <p id="lblResultadoVP"></p>
+
+        </div>
+
         <!-- valor futuro -->
 
         <div class="tarjetaCalculadora">
@@ -497,9 +515,28 @@ for(let i = 1; i <= meses; i++){
 
         </div>
 
+        <!-- interes simple -->
+
+        <div class="tarjetaCalculadora">
+
+            <h2>Interés Simple</h2>
+
+            <input type="number" id="txtCapitalIS" placeholder="Capital Inicial">
+            <input type="number" id="txtInteresIS" placeholder="Tasa de Interés">
+            <input type="number" id="txtTiempoIS" placeholder="Tiempo en años">
+
+            <button onclick="calcularInteresSimple()">
+                Calcular
+            </button>
+
+            <p id="lblResultadoIS"></p>
+
+        </div>
+
     </div>
 
 </section>
+
 
     <!-- ===== TEST ===== -->
 
