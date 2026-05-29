@@ -56,7 +56,7 @@
         </button>
 
         <button onclick="mostrarSeccion('seccion7')">
-           Tabla de Amortización Alemana
+            Tabla de Amortización Alemana
         </button>
 
         <button onclick="mostrarSeccion('test')">
@@ -67,93 +67,81 @@
 
     <!-- ===== CONTENIDO ===== -->
 
-        <div class="titulo">
+    <div class="titulo">
 
-            <h1>Título Principal</h1>
+        <h1>Matemática Financiera💸</h1>
 
-        <p>
-            Agrega aquí la descripción principal de tu página.
-        </p>
+        
+
+    </div>
+
+    <!-- ===== INICIO ===== -->
+
+    <section id="inicio">
+
+        <div class="tarjeta">
+
+            <h2>Bienvenido</h2>
+
+            <p>
+                Bienvenido a esta página de Matemática Financiera.
+                Aquí aprenderás de manera sencilla temas como interés simple,
+                interés compuesto, cuotas y tablas de amortización.
+            </p>
 
         </div>
 
-        <!-- ===== INICIO ===== -->
+    </section>
 
-         <section id="inicio">
+    <!-- ===== OPCION 1 ===== -->
 
-            <div class="tarjeta">
+    <section id="seccion1">
 
-                <h2>Opción 2</h2>
-                <h2>Bienvenido</h2>
-
-                <h3 class="subtitulo">Definición</h3>
-
-                <p>
-                    Aquí puedes agregar tu contenido.
-                </p>
-
-                <h3 class="subtitulo">Explicación</h3>
-
-                <p>
-                    Aquí puedes agregar tu explicación.
-                </p>
-
-                <h3 class="subtitulo">Código Base</h3>
-
-                <pre class="codigo">
-
-console.log("Hola");
-
-            </pre>
-
-            </div>
-
-        </section>
-
-        <!-- ===== OPCION 1 ===== -->
-
-        <section id="seccion1">
-
-            <div class="tarjeta">
+        <div class="tarjeta">
 
             <h2>VALOR PRESENTE</h2>
 
             <h3 class="subtitulo">
-                Definición 
+                Definición
             </h3>
-                
+
             <p>
-               Es un método de la mátematica financiera que permite determinar
-                el valor actual de una cantidad de dinero que se recibirá o pagará en el futuro, 
+                Es un método de la mátematica financiera que permite determinar
+                el valor actual de una cantidad de dinero que se recibirá o pagará en el futuro,
                 considerando factores con la inflación, tase de interés y las opiortunidades de inversión.
-                su objetivo es determinar el equivalente actual de un valor futuro, tomando en cuenta el dinero que 
-                tiene diferente valor segun el momento en que se utilice. 
+                su objetivo es determinar el equivalente actual de un valor futuro, tomando en cuenta el dinero que
+                tiene diferente valor segun el momento en que se utilice.
             </p>
-                <p>Su formula es: VP = VF / (1 + i)^n</p>
+            <p>Su formula es: VP = VF / (1 + i)^n</p>
 
             <p>
                 Una empresa recibira $15000 dentro de 3 años por una inverion realizada. si la tasa
                 de interez anual es del 8%, se desea conocer cual es el valor presente de ese dinero.
-            </p><p>
+            </p>
+            <p>
                 Datos:
-            </p><p>
+            </p>
+            <p>
                 <li>Valor futuro (VF) = $15000 <br></li>
                 <li>Tasa de interés (i) = 8% o 0.08<br></li>
                 <li>Tiempo (n) = 3 años</li>
-            </p><p>
+            </p>
+            <p>
                 Aplicando la formula:
-            </p><p>
+            </p>
+            <p>
                 <li>VP = $15000 / (1 + 0.08)^3<br></li>
                 <li>Resultado: VP = $11938.25<br></li>
-            </p><p>
-            Esto significa que recibir $15,000 dentro de 3 años equivale aproximadamente 
-            a tener $11 ,907.49 en la actualidad, considerando una tasa de interés anual del 8%.
+            </p>
+            <p>
+                Esto significa que recibir $15,000 dentro de 3 años equivale aproximadamente
+                a tener $11 ,907.49 en la actualidad, considerando una tasa de interés anual del 8%.
 
             </p>
 
             <div class="tarjeta">
 
-            <pre class="codigo">
+                <pre class="codigo">
 let valorPresente = 15000;
 let tasaInteres = 0.08;
 let tiempo = 3;
@@ -166,50 +154,58 @@ console.log("Valor Presente: $" + valorPresente.toFixed(2));
 
             </div>
 
-        </section>
+    </section>
 
-        <!-- ===== OPCION 2 ===== -->
+    <!-- ===== OPCION 2 ===== -->
 
-        <section id="seccion2">
+    <section id="seccion2">
 
-            <div class="tarjeta">
+        <div class="tarjeta">
 
             <h2>VALOR FUTURO</h2>
 
             <h3 class="subtitulo">
-                Definición 
+                Definición
             </h3>
-                
+
             <p>
-                El valor futuro es un concepto de la matemática financiera que permite calcular cuánto 
-                valrá una cantidad de dinero en el futuro después de haber generado intereses durante 
-                un determinado período de tiempo. Este cálculo es utilizado para analizar inversiones, 
-                ahorros y capitales que aumentan su valor con el paso del tiempo. 
-            </p><p>
+                El valor futuro es un concepto de la matemática financiera que permite calcular cuánto
+                valrá una cantidad de dinero en el futuro después de haber generado intereses durante
+                un determinado período de tiempo. Este cálculo es utilizado para analizar inversiones,
+                ahorros y capitales que aumentan su valor con el paso del tiempo.
+            </p>
+            <p>
                 Su formula es: VF = VP * (1 + i)^n
-            </p><p>
-                Una persona deposita $8,000 en una cuenta bancaria que ofrece una tasa de interés anual 
-                del 6% durante 4 años. Se desea conocer cuánto dinero tendrá al finalizar ese tiempo.            </p><p>
-               </p><p>
+            </p>
+            <p>
+                Una persona deposita $8,000 en una cuenta bancaria que ofrece una tasa de interés anual
+                del 6% durante 4 años. Se desea conocer cuánto dinero tendrá al finalizar ese tiempo. </p>
+            <p>
+            </p>
+            <p>
                 Datos:
-            </p><p>
+            </p>
+            <p>
                 <li>Valor presente (VP) = $8,000 <br></li>
                 <li>Tasa de interés (i) = 6% o 0.06<br></li>
                 <li>Tiempo (n) = 4 años</li>
-            </p><p>
+            </p>
+            <p>
                 Aplicando la formula:
-            </p><p>
+            </p>
+            <p>
                 <li>VF = $8,000 * (1 + 0.06)^4<br></li>
                 <li>Resultado: VF = $10,092.80<br></li>
-            </p><p>
-            Esto significa que tener $8,000 en la actualidad equivale aproximadamente 
-            a tener $10,092.80 dentro de 4 años, considerando una tasa de interés anual del 6%.
+            </p>
+            <p>
+                Esto significa que tener $8,000 en la actualidad equivale aproximadamente
+                a tener $10,092.80 dentro de 4 años, considerando una tasa de interés anual del 6%.
 
             </p>
 
             <div class="tarjeta">
 
-            <pre class="codigo">
+                <pre class="codigo">
 let valorFuturo = 8000 ;
 let tasaInteres = 0.06;
 let tiempo = 4;
@@ -222,49 +218,60 @@ console.log("Valor Futuro: $" + valorFuturo.toFixed(2));
 
             </div>
 
-        </section>
+    </section>
 
-        <!-- ===== OPCION 3 ===== -->
+    <!-- ===== OPCION 3 ===== -->
 
-        <section id="seccion3">
+    <section id="seccion3">
 
-            <div class="tarjeta">
+        <div class="tarjeta">
 
             <h2>Interes simple</h2>
 
             <h3 class="subtitulo">
-                Definición 
+                Definición
             </h3>
-                
+
             <p>
-                El interés simple es un método de cálculo financiero en el cual los intereses se generan únicamente sobre 
-                el capital inicial durante un período determinado. A diferencia del interés compuesto, los intereses no se 
+                El interés simple es un método de cálculo financiero en el cual los intereses se generan únicamente
+                sobre
+                el capital inicial durante un período determinado. A diferencia del interés compuesto, los intereses no
+                se
                 acumulan al capital, por lo que el monto ganado o pagado se mantiene constante en cada período.
 
-                Este tipo de interés es utilizado comúnmente en préstamos a corto plazo, inversiones básicas y operaciones 
-                financieras simples.            
-            </p><p>
+                Este tipo de interés es utilizado comúnmente en préstamos a corto plazo, inversiones básicas y
+                operaciones
+                financieras simples.
+            </p>
+            <p>
                 Su formula es: I = C * i * t
-            </p><p>
-                Una persona solicita un préstamo de $12,000 con una tasa de interés simple anual del 9% durante 3 años. 
-                Se desea calcular cuánto interés deberá pagar al finalizar el período.               </p><p>
+            </p>
+            <p>
+                Una persona solicita un préstamo de $12,000 con una tasa de interés simple anual del 9% durante 3 años.
+                Se desea calcular cuánto interés deberá pagar al finalizar el período. </p>
+            <p>
                 Datos:
-            </p><p>
+            </p>
+            <p>
                 <li>Capital (C) = $12,000 <br></li>
                 <li>Tasa de interés (i) = 9% o 0.09<br></li>
                 <li>Tiempo (t) = 3 años</li>
-            </p><p>
+            </p>
+            <p>
                 Aplicando la formula:
-            </p><p>
+            </p>
+            <p>
                 <li>I = $12,000 * 0.09 * 3<br></li>
                 <li>Resultado: I = $3,240<br></li>
-            </p><p>
-                Esto significa que la persona deberá pagar $3,240 de interés al finalizar los 3 años, además del capital inicial prestado.
+            </p>
+            <p>
+                Esto significa que la persona deberá pagar $3,240 de interés al finalizar los 3 años, además del capital
+                inicial prestado.
             </p>
 
             <div class="tarjeta">
 
-            <pre class="codigo">
+                <pre class="codigo">
 let capitalInicial = 12000;
 let tasaInteres = 0.09;
 let tiempo = 3;
@@ -277,52 +284,59 @@ console.log("Interés: $" + interes.toFixed(2));
 
             </div>
 
-        </section>
+    </section>
 
-        <!-- ===== OPCION 4 ===== -->
+    <!-- ===== OPCION 4 ===== -->
 
-         <section id="seccion4">
+    <section id="seccion4">
 
-            <div class="tarjeta">
+        <div class="tarjeta">
 
             <h2>Interes compuesto</h2>
 
             <h3 class="subtitulo">
-                Definición 
+                Definición
             </h3>
-                
+
             <p>
-                El interés compuesto es un método de cálculo financiero en el cual los intereses 
-                generados se suman al capital inicial, permitiendo que en cada período se generen 
-                nuevos intereses sobre el monto acumulado. Este proceso provoca un crecimiento 
+                El interés compuesto es un método de cálculo financiero en el cual los intereses
+                generados se suman al capital inicial, permitiendo que en cada período se generen
+                nuevos intereses sobre el monto acumulado. Este proceso provoca un crecimiento
                 progresivo del dinero con el paso del tiempo.
 
-                El interés compuesto es ampliamente utilizado en inversiones, cuentas de ahorro, 
-                créditos bancarios y financiamiento empresarial, debido a que permite incrementar 
-                el capital de manera más rápida que el interés simple.          
-            </p><p>
+                El interés compuesto es ampliamente utilizado en inversiones, cuentas de ahorro,
+                créditos bancarios y financiamiento empresarial, debido a que permite incrementar
+                el capital de manera más rápida que el interés simple.
+            </p>
+            <p>
                 Su formula es: M = C * (1 + i)^n
-            </p><p>
-                Una persona invierte $10,000 en una entidad financiera que ofrece una tasa de interés 
-                compuesto anual del 12% durante 4 años. Se desea calcular el monto acumulado al finalizar el período.              
-            </p><p>
+            </p>
+            <p>
+                Una persona invierte $10,000 en una entidad financiera que ofrece una tasa de interés
+                compuesto anual del 12% durante 4 años. Se desea calcular el monto acumulado al finalizar el período.
+            </p>
+            <p>
                 Datos:
-            </p><p>
+            </p>
+            <p>
                 <li>Capital (C) = $10,000 <br></li>
                 <li>Tasa de interés (i) = 12% o 0.12<br></li>
                 <li>Tiempo (t) = 4 años</li>
-            </p><p>
+            </p>
+            <p>
                 Aplicando la formula:
-            </p><p>
+            </p>
+            <p>
                 <li>M = $10,000 * (1 + 0.12)^4<br></li>
                 <li>Resultado: M = $15,748.29<br></li>
-            </p><p>
+            </p>
+            <p>
                 Esto significa que la persona obtendrá un monto acumulado de $15,748.29 al finalizar los 4 años.
             </p>
 
             <div class="tarjeta">
 
-            <pre class="codigo">
+                <pre class="codigo">
 let capitalInicial = 10000;
 let tasaInteres = 0.12;
 let tiempo = 4;
@@ -335,33 +349,33 @@ console.log("Monto: $" + monto.toFixed(2));
 
             </div>
 
-        </section>
+    </section>
 
-        <!-- ===== OPCION 5 ===== -->
+    <!-- ===== OPCION 5 ===== -->
 
-        <section id="seccion5">
+    <section id="seccion5">
 
-            <div class="tarjeta">
+        <div class="tarjeta">
 
-                <h2>Cuotas y Pagos Periódicos</h2>
+            <h2>Cuotas y Pagos Periódicos</h2>
 
-                <h3 class="subtitulo">Definición</h3>
+            <h3 class="subtitulo">Definición</h3>
 
-                <p>
-                    Las cuotas y pagos periódicos son cantidades de dinero que se pagan en tiempos establecidos, por
-                    ejemplo cada mes o cada semana.
-                </p>
+            <p>
+                Las cuotas y pagos periódicos son cantidades de dinero que se pagan en tiempos establecidos, por
+                ejemplo cada mes o cada semana.
+            </p>
 
-                <h3 class="subtitulo">Explicación</h3>
+            <h3 class="subtitulo">Explicación</h3>
 
-                <p>
-                    Ejemplo: Si una persona compra una computadora en $1200 y decide pagarla en 12 meses, deberá pagar
-                    una cuota mensual de $100.
-                </p>
+            <p>
+                Ejemplo: Si una persona compra una computadora en $1200 y decide pagarla en 12 meses, deberá pagar
+                una cuota mensual de $100.
+            </p>
 
-                <h3 class="subtitulo">Código Base</h3>
+            <h3 class="subtitulo">Código Base</h3>
 
-                <pre class="codigo">
+            <pre class="codigo">
 
 let cuotaMensual = 100;
 let meses = 12;
@@ -372,35 +386,35 @@ console.log("Total a pagar: $" + totalPagar);
 
         </pre>
 
-            </div>
+        </div>
 
-        </section>
+    </section>
 
-        <!-- ===== OPCION 6 ===== -->
+    <!-- ===== OPCION 6 ===== -->
 
-        <section id="seccion6">
+    <section id="seccion6">
 
-            <div class="tarjeta">
+        <div class="tarjeta">
 
-                <h2>Tabla de Amortización Francesa</h2>
+            <h2>Tabla de Amortización Francesa</h2>
 
-                <h3 class="subtitulo">Definición</h3>
+            <h3 class="subtitulo">Definición</h3>
 
-                <p>
-                    La tabla de amortización francesa es un sistema de pago donde las cuotas son iguales durante todo el
-                    préstamo.
-                </p>
+            <p>
+                La tabla de amortización francesa es un sistema de pago donde las cuotas son iguales durante todo el
+                préstamo.
+            </p>
 
-                <h3 class="subtitulo">Explicación</h3>
+            <h3 class="subtitulo">Explicación</h3>
 
-                <p>
-                    Ejemplo: Si una persona solicita un préstamo de $5000 a 10 meses, pagará la misma cuota cada mes
-                    hasta terminar de cancelar la deuda.
-                </p>
+            <p>
+                Ejemplo: Si una persona solicita un préstamo de $5000 a 10 meses, pagará la misma cuota cada mes
+                hasta terminar de cancelar la deuda.
+            </p>
 
-                <h3 class="subtitulo">Código Base</h3>
+            <h3 class="subtitulo">Código Base</h3>
 
-                <pre class="codigo">
+            <pre class="codigo">
 
 let cuota = 250;
 
@@ -410,35 +424,35 @@ if(cuota > 0){
 
         </pre>
 
-            </div>
+        </div>
 
-        </section>
+    </section>
 
-        <!-- ===== OPCION 7 ===== -->
+    <!-- ===== OPCION 7 ===== -->
 
-        <section id="seccion7">
+    <section id="seccion7">
 
-            <div class="tarjeta">
+        <div class="tarjeta">
 
-                <h2>Tabla de Amortización Alemana</h2>
+            <h2>Tabla de Amortización Alemana</h2>
 
-                <h3 class="subtitulo">Definición</h3>
+            <h3 class="subtitulo">Definición</h3>
 
-                <p>
-                    La tabla de amortización alemana es un sistema donde el capital se paga en partes iguales y las
-                    cuotas van disminuyendo con el tiempo.
-                </p>
+            <p>
+                La tabla de amortización alemana es un sistema donde el capital se paga en partes iguales y las
+                cuotas van disminuyendo con el tiempo.
+            </p>
 
-                <h3 class="subtitulo">Explicación</h3>
+            <h3 class="subtitulo">Explicación</h3>
 
-                <p>
-                    Ejemplo: Si una persona pide un préstamo de $4000 a 4 meses, cada mes pagará la misma cantidad de
-                    capital, pero los intereses serán menores, por eso las cuotas bajan poco a poco.
-                </p>
+            <p>
+                Ejemplo: Si una persona pide un préstamo de $4000 a 4 meses, cada mes pagará la misma cantidad de
+                capital, pero los intereses serán menores, por eso las cuotas bajan poco a poco.
+            </p>
 
-                <h3 class="subtitulo">Código Base</h3>
+            <h3 class="subtitulo">Código Base</h3>
 
-                <pre class="codigo">
+            <pre class="codigo">
 
 let capital = 4000;
 let meses = 4;
@@ -449,107 +463,107 @@ for(let i = 1; i <= meses; i++){
 
         </pre>
 
-            </div>
+        </div>
 
-        </section>
+    </section>
 
-        <!-- ===== TEST ===== -->
+    <!-- ===== TEST ===== -->
 
-        <section id="test">
+    <section id="test">
 
-            <div class="tarjeta">
+        <div class="tarjeta">
 
-                <h2>Test</h2>
+            <h2>Test</h2>
 
-                <div class="pregunta">
+            <div class="pregunta">
 
-                    <h3>1. El valor presente representa el dinero actual de una cantidad futura.</h3>
+                <h3>1. El valor presente representa el dinero actual de una cantidad futura.</h3>
 
-                    <label>
-                        <input type="radio" name="p1" value="v">
-                        Verdadero
-                    </label>
+                <label>
+                    <input type="radio" name="p1" value="v">
+                    Verdadero
+                </label>
 
-                    <label>
-                        <input type="radio" name="p1" value="f">
-                        Falso
-                    </label>
-
-                </div>
-
-                <div class="pregunta">
-
-                    <h3>2. El valor futuro calcula cuánto dinero habrá en el futuro.</h3>
-
-                    <label>
-                        <input type="radio" name="p2" value="v">
-                        Verdadero
-                    </label>
-
-                    <label>
-                        <input type="radio" name="p2" value="f">
-                        Falso
-                    </label>
-
-                </div>
-
-                <div class="pregunta">
-
-                    <h3>3. En el interés simple, los intereses se calculan solo sobre el capital inicial.</h3>
-
-                    <label>
-                        <input type="radio" name="p3" value="v">
-                        Verdadero
-                    </label>
-
-                    <label>
-                        <input type="radio" name="p3" value="f">
-                        Falso
-                    </label>
-
-                </div>
-
-                <div class="pregunta">
-
-                    <h3>4. En el interés compuesto, los intereses generan nuevos intereses.</h3>
-
-                    <label>
-                        <input type="radio" name="p4" value="v">
-                        Verdadero
-                    </label>
-
-                    <label>
-                        <input type="radio" name="p4" value="f">
-                        Falso
-                    </label>
-
-                </div>
-
-                <div class="pregunta">
-
-                    <h3>5. En la amortización alemana las cuotas aumentan cada mes.</h3>
-
-                    <label>
-                        <input type="radio" name="p5" value="v">
-                        Verdadero
-                    </label>
-
-                    <label>
-                        <input type="radio" name="p5" value="f">
-                        Falso
-                    </label>
-
-                </div>
-
-                <button class="btn" onclick="calificar()">
-                    Calificar
-                </button>
-
-                <div id="resultado"></div>
+                <label>
+                    <input type="radio" name="p1" value="f">
+                    Falso
+                </label>
 
             </div>
 
-        </section>
+            <div class="pregunta">
+
+                <h3>2. El valor futuro calcula cuánto dinero habrá en el futuro.</h3>
+
+                <label>
+                    <input type="radio" name="p2" value="v">
+                    Verdadero
+                </label>
+
+                <label>
+                    <input type="radio" name="p2" value="f">
+                    Falso
+                </label>
+
+            </div>
+
+            <div class="pregunta">
+
+                <h3>3. En el interés simple, los intereses se calculan solo sobre el capital inicial.</h3>
+
+                <label>
+                    <input type="radio" name="p3" value="v">
+                    Verdadero
+                </label>
+
+                <label>
+                    <input type="radio" name="p3" value="f">
+                    Falso
+                </label>
+
+            </div>
+
+            <div class="pregunta">
+
+                <h3>4. En el interés compuesto, los intereses generan nuevos intereses.</h3>
+
+                <label>
+                    <input type="radio" name="p4" value="v">
+                    Verdadero
+                </label>
+
+                <label>
+                    <input type="radio" name="p4" value="f">
+                    Falso
+                </label>
+
+            </div>
+
+            <div class="pregunta">
+
+                <h3>5. En la amortización alemana las cuotas aumentan cada mes.</h3>
+
+                <label>
+                    <input type="radio" name="p5" value="v">
+                    Verdadero
+                </label>
+
+                <label>
+                    <input type="radio" name="p5" value="f">
+                    Falso
+                </label>
+
+            </div>
+
+            <button class="btn" onclick="calificar()">
+                Calificar
+            </button>
+
+            <div id="resultado"></div>
+
+        </div>
+
+    </section>
 
     </div>
 </body>
