@@ -105,3 +105,16 @@ function calcularInteresSimple(){
     mostrarTexto("lblResultadoIS", "Interés Simple: $" + interesSimple.toFixed(2));
 
 }
+
+function calcularInteresCompuesto(){
+
+    let montoFinal = 0;
+    let capital = recuperarFloat("txtCapitalIC");
+    let interes = recuperarFloat("txtInteresIC");
+    let tiempo = recuperarFloat("txtTiempoIC");
+
+    montoFinal = capital * Math.pow((1 + interes), tiempo);
+
+    mostrarTexto("lblResultadoIC", "Monto Final: $" + montoFinal.toFixed(2));
+
+}

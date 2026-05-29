@@ -239,7 +239,7 @@ console.log("Valor Futuro: $" + valorFuturo.toFixed(2));
             </h3>
 
             <p>
-                El interés simple es un método de cálculo financiero en el cual los intereses se generan únicamente sobre
+                Es un método de cálculo financiero en el cual los intereses se generan únicamente sobre
                 el capital inicial durante un período determinado. A diferencia del interés compuesto, los intereses no se
                 acumulan al capital, por lo que el monto ganado o pagado se mantiene constante en cada período.
 
@@ -314,7 +314,7 @@ console.log("Interés Simple: $" + interesSimple.toFixed(2));
                 el capital de manera más rápida que el interés simple.
             </p>
             <p>
-                Su formula es: M = C * (1 + i)^n
+                Su formula es: MA = C * (1 + i)^n
             </p>
             <h3 class="subtitulo">Ejemplo</h3>
             <p>
@@ -333,15 +333,15 @@ console.log("Interés Simple: $" + interesSimple.toFixed(2));
                 Aplicando la formula:
             </p>
             <p>
-                <li>M = $10,000 * (1 + 0.12)^4<br></li>
-                <li>Resultado: M = $15,748.29<br></li>
+                <li>MA = $10,000 * (1 + 0.12)^4<br></li>
+                <li>Resultado: MA = $15,735.19<br></li>
             </p>
             <p>
                 Esto significa que la persona obtendrá un monto acumulado de $15,748.29 al finalizar los 4 años.
             </p>
 
             <div class="tarjeta">
-
+                <h3 class="subtitulo">Código Base</h3>
                 <pre class="codigo">
 let capitalInicial = 10000;
 let tasaInteres = 0.12;
@@ -530,6 +530,24 @@ for(let i = 1; i <= meses; i++){
             </button>
 
             <p id="lblResultadoIS"></p>
+
+        </div>
+
+        <!-- interes compuesto -->
+
+        <div class="tarjetaCalculadora">
+
+            <h2>Interés Compuesto</h2>
+
+            <input type="number" id="txtCapitalIC" placeholder="Capital Inicial">
+            <input type="number" id="txtInteresIC" placeholder="Tasa de Interés">
+            <input type="number" id="txtTiempoIC"  placeholder="Tiempo en años">
+
+            <button onclick="calcularInteresCompuesto()">
+                Calcular
+            </button>
+
+            <p id="lblResultadoIC"></p>
 
         </div>
 
