@@ -262,3 +262,48 @@ function mostrarAplicacion(prefijo, numero) {
 
     seleccionado.classList.toggle('oculto');
 }
+ // ===== COMPARADOR DE INVERSIONES =====
+function compararInversiones() {
+    let vf1    = recuperarFloat("txtVFA");
+    let tasa1  = recuperarFloat("txtTasaA") / 100;
+    let tiempo1 = recuperarFloat("txtTiempoA");
+
+    let vf2    = recuperarFloat("txtVFB");
+    let tasa2  = recuperarFloat("txtTasaB") / 100;
+    let tiempo2 = recuperarFloat("txtTiempoB");
+
+    if (isNaN(vf1) || isNaN(tasa1) || isNaN(tiempo1) ||
+        isNaN(vf2) || isNaN(tasa2) || isNaN(tiempo2)) {
+        mostrarHTML("resultadoComparador", "⚠️ Por favor ingresa todos los datos.");
+        return;
+    }
+
+    let vpA = vf1 / Math.pow((1 + tasa1), tiempo1);
+    let vpB = vf2 / Math.pow((1 + tasa2), tiempo2);
+
+    let mensaje = "";
+    let icono   = "";
+
+    if (vpA > vpB) {
+        icono   = "✅";
+        mensaje = "La inversión <strong>A</strong> ofrece un mayor valor presente.";
+    } else if (vpB > vpA) {
+        icono   = "✅";
+        mensaje = "La inversión <strong>B</strong> ofrece un mayor valor presente.";
+    } else {
+        icono   = "⚖️";
+        mensaje = "Ambas inversiones tienen el <strong>mismo valor presente</strong>.";
+    }
+
+    mostrarHTML("resultadoComparador",
+        "<div class='filaResultado'>" +
+            "<span>Valor Presente A:</span>" +
+            "<strong>$" + vpA.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Valor Presente B:</span>" +
+            "<strong>$" + vpB.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredicto'>" + icono + " " + mensaje + "</div>"
+    );
+}

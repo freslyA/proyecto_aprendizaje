@@ -123,10 +123,29 @@ console.log("Valor Presente: $" + valorPresente.toFixed(2));
                     </div>
 
                     <div id="ap1_1" class="aplicacion oculto">
-                        <p>
-                            Permite comparar dos opciones de inversión calculando cuál tiene
-                            mayor valor en el presente, ayudando a elegir la más conveniente.
-                        </p>
+                        <h3 class="subtitulo">Comparador de Inversiones</h3>
+
+                        <div class="contenedorComparador">
+
+                            <div class="grupoInversion">
+                                <h4>Inversión A</h4>
+                                <input type="number" id="txtVFA" placeholder="Valor Futuro">
+                                <input type="number" id="txtTasaA" placeholder="Tasa (%)">
+                                <input type="number" id="txtTiempoA" placeholder="Tiempo (años)">
+                            </div>
+
+                            <div class="grupoInversion">
+                                <h4>Inversión B</h4>
+                                <input type="number" id="txtVFB" placeholder="Valor Futuro">
+                                <input type="number" id="txtTasaB" placeholder="Tasa (%)">
+                                <input type="number" id="txtTiempoB" placeholder="Tiempo (años)">
+                            </div>
+
+                        </div>
+
+                        <button class="btnComparar" onclick="compararInversiones()">Comparar</button>
+
+                        <div id="resultadoComparador" class="resultadoComparador"></div>
                     </div>
 
                     <div id="ap1_2" class="aplicacion oculto">

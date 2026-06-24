@@ -404,4 +404,93 @@ section{
     animation: aparecer 0.3s ease;
 }
 
+/* ===== COMPARADOR DE INVERSIONES ===== */
 
+.contenedorComparador {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.grupoInversion {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.grupoInversion h4 {
+    color: #38bdf8;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.grupoInversion input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.grupoInversion input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.btnComparar {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #38bdf8;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 15px;
+}
+
+.btnComparar:hover {
+    transform: scale(1.02);
+}
+
+.resultadoComparador {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 15px 20px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.filaResultado {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: #d1d5db;
+    font-size: 15px;
+}
+
+.filaResultado strong {
+    color: #38bdf8;
+}
+
+.veredicto {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 16px;
+    color: #d1d5db;
+    font-weight: bold;
+    padding-top: 8px;
+}
+
+.veredicto strong {
+    color: #38bdf8;
+}
