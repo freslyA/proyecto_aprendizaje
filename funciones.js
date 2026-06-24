@@ -614,3 +614,77 @@ function calcularFondoEstudios() {
         veredicto
     );
 }
+
+// ===== PRÉSTAMO PERSONAL =====
+
+function calcularPrestamo() {
+    let capital = recuperarFloat("txtPrestamoCapital");
+    let tasa    = recuperarFloat("txtPrestamoTasa") / 100;
+    let tiempo  = recuperarFloat("txtPrestamoTiempo");
+
+    if (isNaN(capital) || isNaN(tasa) || isNaN(tiempo) ||
+        capital <= 0   || tasa <= 0   || tiempo <= 0) {
+        mostrarHTML("resultadoPrestamo", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let interes = capital * tasa * tiempo;
+    let total   = capital + interes;
+
+    mostrarHTML("resultadoPrestamo",
+        "<div class='filaResultado'>" +
+            "<span>Monto prestado:</span>" +
+            "<strong>$" + capital.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Interés a pagar:</span>" +
+            "<strong style='color:#f87171'>$" + interes.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Total a devolver:</span>" +
+            "<strong>$" + total.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredicto'>" +
+            "💳 Por un préstamo de <strong>$" + capital.toFixed(2) + "</strong> " +
+            "durante <strong>" + tiempo + " años</strong>, " +
+            "pagarás <strong style='color:#f87171'>$" + interes.toFixed(2) + "</strong> de interés." +
+        "</div>"
+    );
+}
+
+// ===== AHORRO SIMPLE =====
+
+function calcularAhorroSimple() {
+    let capital = recuperarFloat("txtAhorroSimpleCapital");
+    let tasa    = recuperarFloat("txtAhorroSimpleTasa") / 100;
+    let tiempo  = recuperarFloat("txtAhorroSimpleTiempo");
+
+    if (isNaN(capital) || isNaN(tasa) || isNaN(tiempo) ||
+        capital <= 0   || tasa <= 0   || tiempo <= 0) {
+        mostrarHTML("resultadoAhorroSimple", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let ganancia = capital * tasa * tiempo;
+    let total    = capital + ganancia;
+
+    mostrarHTML("resultadoAhorroSimple",
+        "<div class='filaResultado'>" +
+            "<span>Dinero ahorrado:</span>" +
+            "<strong>$" + capital.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Ganancia:</span>" +
+            "<strong style='color:#4ade80'>$" + ganancia.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Monto final:</span>" +
+            "<strong>$" + total.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredicto'>" +
+            "🏦 Ahorrar <strong>$" + capital.toFixed(2) + "</strong> durante " +
+            "<strong>" + tiempo + " años</strong> te generará " +
+            "<strong style='color:#4ade80'>$" + ganancia.toFixed(2) + "</strong> de ganancia." +
+        "</div>"
+    );
+}

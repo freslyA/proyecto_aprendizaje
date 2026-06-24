@@ -407,21 +407,40 @@ console.log("Interés Simple: $" + interesSimple.toFixed(2));
 
                 <!-- APLICACION -->
                 <div class="contenido app3">
-                    <h3 class="subtitulo">Aplicación</h3>
-                    <p>
-                        El interés simple se usa frecuentemente en:
-                    </p>
-                    <ul>
-                        <li>Préstamos personales a corto plazo.</li>
-                        <li>Créditos de consumo con plazos menores a un año.</li>
-                        <li>Cálculo de multas o recargos por pagos atrasados.</li>
-                        <li>Inversiones básicas en cooperativas o financieras pequeñas.</li>
-                    </ul>
-                    <p>
-                        Por ejemplo, si prestas $2,000 a un amigo al 5% anual por 6 meses,
-                        el interés que recibirás será: IS = 2000 * 0.05 * 0.5 = $50.
-                        Es un cálculo directo y fácil de entender para ambas partes.
-                    </p>
+                    <h3 class="subtitulo">Aplicaciones</h3>
+
+                    <div class="botonesAplicacion">
+                        <button onclick="mostrarAplicacion('ap3_', 1)">Préstamo Personal</button>
+                        <button onclick="mostrarAplicacion('ap3_', 2)">Ahorro Simple</button>
+                    </div>
+
+                    <div id="ap3_1" class="aplicacion oculto">
+                        <h3 class="subtitulo">Préstamo Personal</h3>
+                        <div class="grupoProyecto">
+                            <label>Monto prestado ($)</label>
+                            <input type="number" id="txtPrestamoCapital" placeholder="Ej: 1000">
+                            <label>Interés (%)</label>
+                            <input type="number" id="txtPrestamoTasa" placeholder="Ej: 10">
+                            <label>Tiempo (años)</label>
+                            <input type="number" id="txtPrestamoTiempo" placeholder="Ej: 2">
+                        </div>
+                        <button class="btnComparar" onclick="calcularPrestamo()">Calcular</button>
+                        <div id="resultadoPrestamo" class="resultadoComparador"></div>
+                    </div>
+
+                    <div id="ap3_2" class="aplicacion oculto">
+                        <h3 class="subtitulo">Ahorro Simple</h3>
+                        <div class="grupoProyecto">
+                            <label>Dinero ahorrado ($)</label>
+                            <input type="number" id="txtAhorroSimpleCapital" placeholder="Ej: 500">
+                            <label>Interés (%)</label>
+                            <input type="number" id="txtAhorroSimpleTasa" placeholder="Ej: 8">
+                            <label>Tiempo (años)</label>
+                            <input type="number" id="txtAhorroSimpleTiempo" placeholder="Ej: 3">
+                        </div>
+                        <button class="btnComparar" onclick="calcularAhorroSimple()">Calcular</button>
+                        <div id="resultadoAhorroSimple" class="resultadoComparador"></div>
+                    </div>
                 </div>
 
             </div>
