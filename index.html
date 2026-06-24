@@ -149,24 +149,69 @@ console.log("Valor Presente: $" + valorPresente.toFixed(2));
                     </div>
 
                     <div id="ap1_2" class="aplicacion oculto">
-                        <p>
-                            Calcula cuánto vale hoy una herencia que se recibirá en el futuro,
-                            considerando la tasa de interés y el tiempo de espera.
-                        </p>
+                        <h3 class="subtitulo">Herencia Futura</h3>
+
+                        <div class="grupoHerencia">
+                            <label>Valor de la herencia ($)</label>
+                            <input type="number" id="txtHerenciaVF" placeholder="Ej: 500000">
+
+                            <label>Tasa de interés anual (%)</label>
+                            <input type="number" id="txtHerenciaTasa" placeholder="Ej: 8">
+
+                            <label>Años para recibirla</label>
+                            <input type="number" id="txtHerenciaTiempo" placeholder="Ej: 10">
+                        </div>
+
+                        <button class="btnComparar" onclick="calcularHerencia()">Calcular</button>
+
+                        <div id="resultadoHerencia" class="resultadoComparador"></div>
                     </div>
 
                     <div id="ap1_3" class="aplicacion oculto">
-                        <p>
-                            Determina si es más conveniente recibir un pago hoy o esperar varios
-                            años, comparando el valor presente de ambas opciones.
-                        </p>
+                        <h3 class="subtitulo">¿Pago hoy o después?</h3>
+
+                        <div class="grupoPago">
+                            <label>Precio si pagas hoy ($)</label>
+                            <input type="number" id="txtPagoHoy" placeholder="Ej: 900">
+
+                            <label>Precio si pagas después ($)</label>
+                            <input type="number" id="txtPagoFuturo" placeholder="Ej: 1000">
+
+                            <label>Tasa de interés (%)</label>
+                            <input type="number" id="txtPagoTasa" placeholder="Ej: 8">
+
+                            <label>Tiempo (años)</label>
+                            <input type="number" id="txtPagoTiempo" placeholder="Ej: 1">
+                        </div>
+
+                        <button class="btnComparar" onclick="calcularPagoHoyDespues()">Comparar</button>
+
+                        <div id="resultadoPago" class="resultadoComparador"></div>
                     </div>
 
                     <div id="ap1_4" class="aplicacion oculto">
-                        <p>
-                            Evalúa proyectos de inversión en empresas calculando si los ingresos
-                            futuros justifican el dinero invertido hoy.
-                        </p>
+                        <h3 class="subtitulo">Evaluador de Proyectos de Inversión</h3>
+
+                        <div class="grupoProyecto">
+                            <label>Inversión Inicial ($)</label>
+                            <input type="number" id="txtInversionInicial" placeholder="Ej: 50000">
+
+                            <label>Tasa de interés (%)</label>
+                            <input type="number" id="txtInversionTasa" placeholder="Ej: 10">
+
+                            <label>Ingreso Año 1 ($)</label>
+                            <input type="number" id="txtIngreso1" placeholder="Ej: 20000">
+
+                            <label>Ingreso Año 2 ($)</label>
+                            <input type="number" id="txtIngreso2" placeholder="Ej: 20000">
+
+                            <label>Ingreso Año 3 ($)</label>
+                            <input type="number" id="txtIngreso3" placeholder="Ej: 20000">
+                        </div>
+
+                        <button class="btnComparar" onclick="evaluarProyecto()">Evaluar</button>
+
+                        <div id="resultadoProyecto" class="resultadoComparador"></div>
                     </div>
                 </div>
             </div>

@@ -494,3 +494,134 @@ section{
 .veredicto strong {
     color: #38bdf8;
 }
+
+/* ===== HERENCIA FUTURA ===== */
+
+.grupoHerencia {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.grupoHerencia label {
+    color: #38bdf8;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.grupoHerencia input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.grupoHerencia input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ===== PAGO HOY O DESPUÉS ===== */
+
+.grupoPago {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.grupoPago label {
+    color: #38bdf8;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.grupoPago input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.grupoPago input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ===== EVALUADOR DE PROYECTOS ===== */
+
+.grupoProyecto {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.grupoProyecto label {
+    color: #38bdf8;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.grupoProyecto input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.grupoProyecto input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.veredictoProyecto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.iconoProyecto {
+    font-size: 30px;
+}
+
+.tituloProyecto {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.mensajeProyecto {
+    font-size: 14px;
+    color: #d1d5db;
+    max-width: 320px;
+    line-height: 1.6;
+}

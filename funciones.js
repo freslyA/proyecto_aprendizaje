@@ -307,3 +307,160 @@ function compararInversiones() {
         "<div class='veredicto'>" + icono + " " + mensaje + "</div>"
     );
 }
+
+// ===== HERENCIA =====
+function calcularHerencia() {
+    let vf     = recuperarFloat("txtHerenciaVF");
+    let tasa   = recuperarFloat("txtHerenciaTasa") / 100;
+    let tiempo = recuperarFloat("txtHerenciaTiempo");
+
+    if (isNaN(vf) || isNaN(tasa) || isNaN(tiempo) ||
+        vf <= 0  || tasa <= 0   || tiempo <= 0) {
+        mostrarHTML("resultadoHerencia", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let vp = vf / Math.pow((1 + tasa), tiempo);
+
+    mostrarHTML("resultadoHerencia",
+        "<div class='filaResultado'>" +
+            "<span>Valor de la herencia:</span>" +
+            "<strong>$" + vf.toLocaleString("es-EC", {minimumFractionDigits: 2}) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Valor presente hoy:</span>" +
+            "<strong>$" + vp.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredicto'>" +
+            "💡 Si hoy tuvieras <strong>$" + vp.toFixed(2) + "</strong> e invirtieras ese dinero " +
+            "al <strong>" + (tasa * 100) + "%</strong> anual, dentro de <strong>" + tiempo + " años</strong> " +
+            "tendrías aproximadamente <strong>$" + vf.toLocaleString("es-EC", {minimumFractionDigits: 2}) + "</strong>." +
+        "</div>"
+    );
+}
+
+// ===== PAGO HOY O DESPUÉS =====
+function calcularPagoHoyDespues() {
+    let pagoHoy    = recuperarFloat("txtPagoHoy");
+    let pagoFuturo = recuperarFloat("txtPagoFuturo");
+    let tasa       = recuperarFloat("txtPagoTasa") / 100;
+    let tiempo     = recuperarFloat("txtPagoTiempo");
+
+    if (isNaN(pagoHoy)  || isNaN(pagoFuturo) ||
+        isNaN(tasa)     || isNaN(tiempo)      ||
+        pagoHoy <= 0    || pagoFuturo <= 0    ||
+        tasa <= 0       || tiempo <= 0) {
+        mostrarHTML("resultadoPago", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let vp = pagoFuturo / Math.pow((1 + tasa), tiempo);
+
+    let icono    = "";
+    let veredicto = "";
+
+    if (pagoHoy < vp) {
+        icono     = "✅";
+        veredicto = "Conviene pagar <strong>HOY</strong>, porque $" + pagoHoy.toFixed(2) +
+                    " es menor que el valor presente del pago futuro ($" + vp.toFixed(2) + ").";
+    } else if (vp < pagoHoy) {
+        icono     = "✅";
+        veredicto = "Conviene pagar <strong>DESPUÉS</strong>, porque su valor presente ($" +
+                    vp.toFixed(2) + ") es menor que pagar $" + pagoHoy.toFixed(2) + " hoy.";
+    } else {
+        icono     = "⚖️";
+        veredicto = "Ambas opciones tienen el <strong>mismo costo</strong> en términos de valor presente.";
+    }
+
+    mostrarHTML("resultadoPago",
+        "<div class='filaResultado'>" +
+            "<span>Pagar hoy:</span>" +
+            "<strong>$" + pagoHoy.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Valor presente del pago futuro:</span>" +
+            "<strong>$" + vp.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredicto'>" +
+            icono + " " + veredicto +
+        "</div>"
+    );
+}
+
+// Evaluar proyecto
+
+function evaluarProyecto() {
+    let inversion = recuperarFloat("txtInversionInicial");
+    let tasa      = recuperarFloat("txtInversionTasa") / 100;
+    let ingreso1  = recuperarFloat("txtIngreso1");
+    let ingreso2  = recuperarFloat("txtIngreso2");
+    let ingreso3  = recuperarFloat("txtIngreso3");
+
+    if (isNaN(inversion) || isNaN(tasa)     ||
+        isNaN(ingreso1)  || isNaN(ingreso2) || isNaN(ingreso3) ||
+        inversion <= 0   || tasa <= 0) {
+        mostrarHTML("resultadoProyecto", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let vp1 = ingreso1 / Math.pow(1 + tasa, 1);
+    let vp2 = ingreso2 / Math.pow(1 + tasa, 2);
+    let vp3 = ingreso3 / Math.pow(1 + tasa, 3);
+
+    let vpTotal = vp1 + vp2 + vp3;
+    let van     = vpTotal - inversion; // Valor Actual Neto
+
+    let icono     = "";
+    let titulo    = "";
+    let mensaje   = "";
+    let colorVAN  = "";
+
+    if (vpTotal > inversion) {
+        icono    = "✅";
+        titulo   = "PROYECTO RENTABLE";
+        mensaje  = "Los ingresos futuros justifican la inversión realizada hoy.";
+        colorVAN = "#4ade80";
+    } else if (vpTotal < inversion) {
+        icono    = "❌";
+        titulo   = "PROYECTO NO RENTABLE";
+        mensaje  = "La inversión es mayor que el valor actual de los ingresos futuros.";
+        colorVAN = "#f87171";
+    } else {
+        icono    = "⚖️";
+        titulo   = "PROYECTO EN PUNTO DE EQUILIBRIO";
+        mensaje  = "Los ingresos futuros equivalen exactamente a la inversión inicial.";
+        colorVAN = "#38bdf8";
+    }
+
+    mostrarHTML("resultadoProyecto",
+        "<div class='filaResultado'>" +
+            "<span>VP Año 1:</span>" +
+            "<strong>$" + vp1.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>VP Año 2:</span>" +
+            "<strong>$" + vp2.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>VP Año 3:</span>" +
+            "<strong>$" + vp3.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>VP Total:</span>" +
+            "<strong>$" + vpTotal.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Inversión inicial:</span>" +
+            "<strong>$" + inversion.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>VAN (diferencia):</span>" +
+            "<strong style='color:" + colorVAN + "'>$" + van.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredictoProyecto'>" +
+            "<span class='iconoProyecto'>" + icono + "</span>" +
+            "<span class='tituloProyecto' style='color:" + colorVAN + "'>" + titulo + "</span>" +
+            "<span class='mensajeProyecto'>" + mensaje + "</span>" +
+        "</div>"
+    );
+}
