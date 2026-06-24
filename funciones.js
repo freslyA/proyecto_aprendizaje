@@ -464,3 +464,153 @@ function evaluarProyecto() {
         "</div>"
     );
 }
+
+// ===== CUENTA DE AHORROS =====
+
+function calcularAhorro() {
+    let capital = recuperarFloat("txtAhorroCapital");
+    let tasa    = recuperarFloat("txtAhorroTasa") / 100;
+    let tiempo  = recuperarFloat("txtAhorroTiempo");
+
+    if (isNaN(capital) || isNaN(tasa) || isNaN(tiempo) ||
+        capital <= 0   || tasa <= 0   || tiempo <= 0) {
+        mostrarHTML("resultadoAhorro", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let vf = capital * Math.pow(1 + tasa, tiempo);
+
+    mostrarHTML("resultadoAhorro",
+        "<div class='filaResultado'>" +
+            "<span>Depósito inicial:</span>" +
+            "<strong>$" + capital.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Dinero acumulado:</span>" +
+            "<strong>$" + vf.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredicto'>" +
+            "💰 En <strong>" + tiempo + " años</strong> tu ahorro crecerá de " +
+            "<strong>$" + capital.toFixed(2) + "</strong> a " +
+            "<strong>$" + vf.toFixed(2) + "</strong>." +
+        "</div>"
+    );
+}
+
+// ===== CRECIMIENTO DE INVERSIÓN =====
+
+function calcularCrecimiento() {
+    let capital = recuperarFloat("txtCrecimientoCapital");
+    let tasa    = recuperarFloat("txtCrecimientoTasa") / 100;
+    let tiempo  = recuperarFloat("txtCrecimientoTiempo");
+
+    if (isNaN(capital) || isNaN(tasa) || isNaN(tiempo) ||
+        capital <= 0   || tasa <= 0   || tiempo <= 0) {
+        mostrarHTML("resultadoCrecimiento", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let vf      = capital * Math.pow(1 + tasa, tiempo);
+    let ganancia = vf - capital;
+
+    mostrarHTML("resultadoCrecimiento",
+        "<div class='filaResultado'>" +
+            "<span>Inversión inicial:</span>" +
+            "<strong>$" + capital.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Valor final:</span>" +
+            "<strong>$" + vf.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Ganancia obtenida:</span>" +
+            "<strong style='color:#4ade80'>$" + ganancia.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredicto'>" +
+            "📈 Tu inversión creció <strong>$" + ganancia.toFixed(2) + "</strong> " +
+            "en <strong>" + tiempo + " años</strong>." +
+        "</div>"
+    );
+}
+
+// ===== META DE AHORRO =====
+
+function calcularMeta() {
+    let capital  = recuperarFloat("txtMetaCapital");
+    let tasa     = recuperarFloat("txtMetaTasa") / 100;
+    let tiempo   = recuperarFloat("txtMetaTiempo");
+    let objetivo = recuperarFloat("txtMetaObjetivo");
+
+    if (isNaN(capital) || isNaN(tasa) || isNaN(tiempo) || isNaN(objetivo) ||
+        capital <= 0   || tasa <= 0   || tiempo <= 0   || objetivo <= 0) {
+        mostrarHTML("resultadoMeta", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let vf         = capital * Math.pow(1 + tasa, tiempo);
+    let diferencia = objetivo - vf;
+
+    let veredicto = "";
+    if (vf >= objetivo) {
+        veredicto = "<div class='veredicto'>✅ <strong>¡Alcanzas tu meta!</strong> " +
+                    "Incluso te sobran <strong style='color:#4ade80'>$" +
+                    Math.abs(diferencia).toFixed(2) + "</strong>.</div>";
+    } else {
+        veredicto = "<div class='veredicto'>❌ Aún <strong>no alcanzas tu meta</strong>. " +
+                    "Te faltan <strong style='color:#f87171'>$" +
+                    diferencia.toFixed(2) + "</strong>.</div>";
+    }
+
+    mostrarHTML("resultadoMeta",
+        "<div class='filaResultado'>" +
+            "<span>Monto acumulado:</span>" +
+            "<strong>$" + vf.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Valor de la meta:</span>" +
+            "<strong>$" + objetivo.toFixed(2) + "</strong>" +
+        "</div>" +
+        veredicto
+    );
+}
+
+// ===== FONDO PARA ESTUDIOS =====
+
+function calcularFondoEstudios() {
+    let capital = recuperarFloat("txtEstudiosCapital");
+    let tasa    = recuperarFloat("txtEstudiosTasa") / 100;
+    let tiempo  = recuperarFloat("txtEstudiosTiempo");
+    let costo   = recuperarFloat("txtEstudiosCosto");
+
+    if (isNaN(capital) || isNaN(tasa) || isNaN(tiempo) || isNaN(costo) ||
+        capital <= 0   || tasa <= 0   || tiempo <= 0   || costo <= 0) {
+        mostrarHTML("resultadoEstudios", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let fondo      = capital * Math.pow(1 + tasa, tiempo);
+    let diferencia = costo - fondo;
+
+    let veredicto = "";
+    if (fondo >= costo) {
+        veredicto = "<div class='veredicto'>✅ <strong>¡El fondo cubre los estudios!</strong> " +
+                    "Te sobran <strong style='color:#4ade80'>$" +
+                    Math.abs(diferencia).toFixed(2) + "</strong>.</div>";
+    } else {
+        veredicto = "<div class='veredicto'>❌ <strong>No cubre el costo total.</strong> " +
+                    "Faltan <strong style='color:#f87171'>$" +
+                    diferencia.toFixed(2) + "</strong>.</div>";
+    }
+
+    mostrarHTML("resultadoEstudios",
+        "<div class='filaResultado'>" +
+            "<span>Fondo acumulado:</span>" +
+            "<strong>$" + fondo.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Costo de estudios:</span>" +
+            "<strong>$" + costo.toFixed(2) + "</strong>" +
+        "</div>" +
+        veredicto
+    );
+}

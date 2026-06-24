@@ -275,21 +275,74 @@ console.log("Valor Futuro: $" + valorFuturo.toFixed(2));
 
                 <!-- APLICACION -->
                 <div class="contenido app2">
-                    <h3 class="subtitulo">Aplicación</h3>
-                    <p>
-                        El valor futuro se aplica en la vida real en situaciones como:
-                    </p>
-                    <ul>
-                        <li>Planificar cuánto dinero tendrás al jubilarte si ahorras hoy.</li>
-                        <li>Proyectar el crecimiento de una inversión a lo largo del tiempo.</li>
-                        <li>Comparar distintas opciones de ahorro con diferentes tasas de interés.</li>
-                        <li>Calcular el monto final de un depósito a plazo fijo.</li>
-                    </ul>
-                    <p>
-                        Por ejemplo, si depositas $5,000 hoy con una tasa del 5% anual durante 10 años,
-                        al finalizar tendrás aproximadamente $8,144.47. Conocer este valor te ayuda a
-                        planificar mejor tus metas financieras.
-                    </p>
+                    <h3 class="subtitulo">Aplicaciones</h3>
+
+                    <div class="botonesAplicacion">
+                        <button onclick="mostrarAplicacion('ap2_', 1)">Cuenta de ahorros</button>
+                        <button onclick="mostrarAplicacion('ap2_', 2)">Crecimiento de inversión</button>
+                        <button onclick="mostrarAplicacion('ap2_', 3)">Casa o automóvil</button>
+                        <button onclick="mostrarAplicacion('ap2_', 4)">Fondo para estudios</button>
+                    </div>
+
+                    <div id="ap2_1" class="aplicacion oculto">
+                        <h3 class="subtitulo">Cuenta de Ahorros</h3>
+                        <div class="grupoProyecto">
+                            <label>Depósito Inicial ($)</label>
+                            <input type="number" id="txtAhorroCapital" placeholder="Ej: 1000">
+                            <label>Interés Anual (%)</label>
+                            <input type="number" id="txtAhorroTasa" placeholder="Ej: 8">
+                            <label>Tiempo (años)</label>
+                            <input type="number" id="txtAhorroTiempo" placeholder="Ej: 5">
+                        </div>
+                        <button class="btnComparar" onclick="calcularAhorro()">Calcular</button>
+                        <div id="resultadoAhorro" class="resultadoComparador"></div>
+                    </div>
+
+                    <div id="ap2_2" class="aplicacion oculto">
+                        <h3 class="subtitulo">Crecimiento de una Inversión</h3>
+                        <div class="grupoProyecto">
+                            <label>Inversión Inicial ($)</label>
+                            <input type="number" id="txtCrecimientoCapital" placeholder="Ej: 5000">
+                            <label>Interés (%)</label>
+                            <input type="number" id="txtCrecimientoTasa" placeholder="Ej: 12">
+                            <label>Tiempo (años)</label>
+                            <input type="number" id="txtCrecimientoTiempo" placeholder="Ej: 4">
+                        </div>
+                        <button class="btnComparar" onclick="calcularCrecimiento()">Calcular</button>
+                        <div id="resultadoCrecimiento" class="resultadoComparador"></div>
+                    </div>
+
+                    <div id="ap2_3" class="aplicacion oculto">
+                        <h3 class="subtitulo">Meta de Ahorro: Casa o Automóvil</h3>
+                        <div class="grupoProyecto">
+                            <label>Ahorro Inicial ($)</label>
+                            <input type="number" id="txtMetaCapital" placeholder="Ej: 3000">
+                            <label>Interés (%)</label>
+                            <input type="number" id="txtMetaTasa" placeholder="Ej: 7">
+                            <label>Tiempo (años)</label>
+                            <input type="number" id="txtMetaTiempo" placeholder="Ej: 8">
+                            <label>Valor de la meta ($)</label>
+                            <input type="number" id="txtMetaObjetivo" placeholder="Ej: 10000">
+                        </div>
+                        <button class="btnComparar" onclick="calcularMeta()">Calcular</button>
+                        <div id="resultadoMeta" class="resultadoComparador"></div>
+                    </div>
+
+                    <div id="ap2_4" class="aplicacion oculto">
+                        <h3 class="subtitulo">Fondo para Estudios</h3>
+                        <div class="grupoProyecto">
+                            <label>Dinero Inicial ($)</label>
+                            <input type="number" id="txtEstudiosCapital" placeholder="Ej: 2000">
+                            <label>Interés (%)</label>
+                            <input type="number" id="txtEstudiosTasa" placeholder="Ej: 10">
+                            <label>Tiempo (años)</label>
+                            <input type="number" id="txtEstudiosTiempo" placeholder="Ej: 6">
+                            <label>Costo de estudios ($)</label>
+                            <input type="number" id="txtEstudiosCosto" placeholder="Ej: 5000">
+                        </div>
+                        <button class="btnComparar" onclick="calcularFondoEstudios()">Calcular</button>
+                        <div id="resultadoEstudios" class="resultadoComparador"></div>
+                    </div>
                 </div>
 
             </div>
