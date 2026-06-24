@@ -111,24 +111,45 @@ console.log("Valor Presente: $" + valorPresente.toFixed(2));
                 </div>
 
                 <!-- APLICACION -->
+            
                 <div class="contenido app1">
-                    <h3 class="subtitulo">Aplicación</h3>
-                    <p>
-                        El valor presente se aplica en la vida real en situaciones como:
-                    </p>
-                    <ul>
-                        <li>Evaluar si una inversión futura vale la pena hoy.</li>
-                        <li>Comparar ofertas de pago: recibir dinero ahora vs. en el futuro.</li>
-                        <li>Calcular el precio justo de un bono o activo financiero.</li>
-                        <li>Tomar decisiones sobre préstamos o financiamientos.</li>
-                    </ul>
-                    <p>
-                        Por ejemplo, si te ofrecen $20,000 en 5 años o $14,000 hoy, con una tasa del 7%,
-                        el valor presente de los $20,000 sería aproximadamente $14,259. Esto significa que
-                        ambas opciones son casi equivalentes, pero recibir el dinero hoy elimina el riesgo.
-                    </p>
-                </div>
+                    <h3 class="subtitulo">Aplicaciones</h3>
 
+                    <div class="botonesAplicacion">
+                        <button onclick="mostrarAplicacion('ap1_', 1)">Comparar inversiones</button>
+                        <button onclick="mostrarAplicacion('ap1_', 2)">Herencia futura</button>
+                        <button onclick="mostrarAplicacion('ap1_', 3)">¿Pago hoy o después?</button>
+                        <button onclick="mostrarAplicacion('ap1_', 4)">Proyectos empresariales</button>
+                    </div>
+
+                    <div id="ap1_1" class="aplicacion oculto">
+                        <p>
+                            Permite comparar dos opciones de inversión calculando cuál tiene
+                            mayor valor en el presente, ayudando a elegir la más conveniente.
+                        </p>
+                    </div>
+
+                    <div id="ap1_2" class="aplicacion oculto">
+                        <p>
+                            Calcula cuánto vale hoy una herencia que se recibirá en el futuro,
+                            considerando la tasa de interés y el tiempo de espera.
+                        </p>
+                    </div>
+
+                    <div id="ap1_3" class="aplicacion oculto">
+                        <p>
+                            Determina si es más conveniente recibir un pago hoy o esperar varios
+                            años, comparando el valor presente de ambas opciones.
+                        </p>
+                    </div>
+
+                    <div id="ap1_4" class="aplicacion oculto">
+                        <p>
+                            Evalúa proyectos de inversión en empresas calculando si los ingresos
+                            futuros justifican el dinero invertido hoy.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

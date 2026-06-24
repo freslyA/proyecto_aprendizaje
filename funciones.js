@@ -202,7 +202,7 @@ function calcularFrancesa(){
 }
 
 // ===== AMORTIZACIÓN ALEMANA =====
-// Capital amortizado constante; intereses y cuota total decrecen cada período.
+// Capital amortizado constante; 
 
 function calcularAlemana(){
     let monto   = recuperarFloat("txtMontoAL");
@@ -244,4 +244,21 @@ function calcularAlemana(){
         "lblResultadoAL",
         "Capital por cuota: $" + capitalFijo.toFixed(2) + tabla
     );
+}
+
+// Mostrar u ocultar aplicaciones dentro de una sección
+function mostrarAplicacion(prefijo, numero) {
+    let seleccionado = document.getElementById(prefijo + numero);
+    if (!seleccionado) return;
+
+    let contenedor = seleccionado.parentElement;
+    let aplicaciones = contenedor.querySelectorAll('.aplicacion');
+
+    aplicaciones.forEach(function(a) {
+        if (a.id !== prefijo + numero) {
+            a.classList.add('oculto');
+        }
+    });
+
+    seleccionado.classList.toggle('oculto');
 }
