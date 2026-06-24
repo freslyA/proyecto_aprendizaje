@@ -1,36 +1,40 @@
+// ===== ABRIR / CERRAR MENU =====
 
 function abrirMenu(){
-
     let menu = document.getElementById("menu");
-
-    let contenido = document.getElementById("contenido");
-
     menu.classList.toggle("oculto");
-
-    contenido.classList.toggle("expandido");
-
 }
 
-/* ===== MOSTRAR SECCION ===== */
+// ===== MOSTRAR SECCION =====
 
 function mostrarSeccion(idSeccion){
-
     let secciones = document.querySelectorAll("section");
-
     for(let i = 0; i < secciones.length; i++){
-
         secciones[i].style.display = "none";
-
     }
-
     document.getElementById(idSeccion).style.display = "block";
-
 }
 
-/* ===== CALIFICAR TEST ===== */
+// ===== MOSTRAR PARTE (TABS dentro de una sección) =====
+
+function mostrarParte(idSeccion, claseMostrar){
+    let seccion = document.getElementById(idSeccion);
+    if(!seccion) return;
+
+    let contenidos = seccion.querySelectorAll(".contenido");
+    contenidos.forEach(function(c){
+        c.classList.remove("activo");
+    });
+
+    let mostrar = seccion.querySelector("." + claseMostrar);
+    if(mostrar){
+        mostrar.classList.add("activo");
+    }
+}
+
+// ===== CALIFICAR TEST =====
 
 function calificar(){
-
     let puntos = 0;
 
     let p1 = document.querySelector('input[name="p1"]:checked');
@@ -39,135 +43,267 @@ function calificar(){
     let p4 = document.querySelector('input[name="p4"]:checked');
     let p5 = document.querySelector('input[name="p5"]:checked');
 
-    if(p1 && p1.value == "v"){
-        puntos++;
-    }
-
-    if(p2 && p2.value == "v"){
-        puntos++;
-    }
-
-    if(p3 && p3.value == "v"){
-        puntos++;
-    }
-
-    if(p4 && p4.value == "v"){
-        puntos++;
-    }
-
-    if(p5 && p5.value == "f"){
-        puntos++;
-    }
+    if(p1 && p1.value == "v") puntos++;
+    if(p2 && p2.value == "v") puntos++;
+    if(p3 && p3.value == "v") puntos++;
+    if(p4 && p4.value == "v") puntos++;
+    if(p5 && p5.value == "f") puntos++; // La alemana DISMINUYE → "aumentan" es FALSO
 
     document.getElementById("resultado").innerHTML =
-    "Tu nota es: " + puntos + " / 5";
-
+        "Tu nota es: " + puntos + " / 5";
 }
+
+// ===== VALOR PRESENTE =====
+// Fórmula: VP = VF / (1 + i)^n
+// El usuario ingresa la tasa como porcentaje (ej: 8 para 8%)
 
 function calcularValorPresente(){
-
-    let vp = 0;
     let valorFuturo = recuperarFloat("txtValorFuturoVP");
-    let interes = recuperarFloat("txtInteresVP");
-    let tiempo = recuperarFloat("txtTiempoVP");
+    let interes     = recuperarFloat("txtInteresVP") / 100;
+    let tiempo      = recuperarFloat("txtTiempoVP");
 
-    vp = valorFuturo / Math.pow((1 + interes), tiempo);
+    if(isNaN(valorFuturo) || isNaN(interes) || isNaN(tiempo)){
+        mostrarTexto("lblResultadoVP", "Por favor ingresa todos los datos.");
+        return;
+    }
 
-    mostrarTexto(
-        "lblResultadoVP",
-        "Valor Presente: $" + vp.toFixed(2)
-    );
-
+    let vp = valorFuturo / Math.pow((1 + interes), tiempo);
+    mostrarTexto("lblResultadoVP", "Valor Presente: $" + vp.toFixed(2));
 }
+
+// ===== VALOR FUTURO =====
+// Fórmula: VF = C * (1 + i)^n
 
 function calcularValorFuturo(){
-
-    let vf = 0;
-    let interes = recuperarFloat("txtInteresVF");
-    let tiempo = recuperarFloat("txtTiempoVF");
     let capitalInicial = recuperarFloat("txtCapitalInicialVF");
+    let interes        = recuperarFloat("txtInteresVF") / 100;
+    let tiempo         = recuperarFloat("txtTiempoVF");
 
-    vf = capitalInicial * Math.pow((1 + interes), tiempo);
+    if(isNaN(capitalInicial) || isNaN(interes) || isNaN(tiempo)){
+        mostrarTexto("lblResultadoVF", "Por favor ingresa todos los datos.");
+        return;
+    }
 
+    let vf = capitalInicial * Math.pow((1 + interes), tiempo);
     mostrarTexto("lblResultadoVF", "Valor Futuro: $" + vf.toFixed(2));
-
 }
+
+// ===== INTERÉS SIMPLE =====
+// Fórmula: IS = C * i * t
 
 function calcularInteresSimple(){
-
-    let interesSimple = 0;
     let capital = recuperarFloat("txtCapitalIS");
-    let interes = recuperarFloat("txtInteresIS");
-    let tiempo = recuperarFloat("txtTiempoIS");
+    let interes = recuperarFloat("txtInteresIS") / 100;
+    let tiempo  = recuperarFloat("txtTiempoIS");
 
-    interesSimple = capital * interes * tiempo;
+    if(isNaN(capital) || isNaN(interes) || isNaN(tiempo)){
+        mostrarTexto("lblResultadoIS", "Por favor ingresa todos los datos.");
+        return;
+    }
 
+    let interesSimple = capital * interes * tiempo;
     mostrarTexto("lblResultadoIS", "Interés Simple: $" + interesSimple.toFixed(2));
-
 }
+
+// ===== INTERÉS COMPUESTO =====
+// Fórmula: MA = C * (1 + i)^n
 
 function calcularInteresCompuesto(){
-
-    let montoFinal = 0;
     let capital = recuperarFloat("txtCapitalIC");
-    let interes = recuperarFloat("txtInteresIC");
-    let tiempo = recuperarFloat("txtTiempoIC");
+    let interes = recuperarFloat("txtInteresIC") / 100;
+    let tiempo  = recuperarFloat("txtTiempoIC");
 
-    montoFinal = capital * Math.pow((1 + interes), tiempo);
+    if(isNaN(capital) || isNaN(interes) || isNaN(tiempo)){
+        mostrarTexto("lblResultadoIC", "Por favor ingresa todos los datos.");
+        return;
+    }
 
+    let montoFinal = capital * Math.pow((1 + interes), tiempo);
     mostrarTexto("lblResultadoIC", "Monto Final: $" + montoFinal.toFixed(2));
-
 }
-// TEMA 5
-function calcularCuotas() {
 
+// ===== CUOTAS Y PAGOS PERIÓDICOS =====
+// Fórmula anualidad: C = P * [i*(1+i)^n] / [(1+i)^n - 1]
+
+function calcularCuotas(){
     let prestamo = recuperarFloat("txtPrestamoCPP");
-    let interes = recuperarFloat("txtInteresCPP") / 100;
-    let cuotas = recuperarInt("txtMesesCPP");
+    let interes  = recuperarFloat("txtInteresCPP") / 100;
+    let cuotas   = recuperarFloat("txtMesesCPP");
 
-    let pago = (prestamo * interes) /
-        (1 - Math.pow(1 + interes, -cuotas));
+    if(isNaN(prestamo) || isNaN(interes) || isNaN(cuotas)){
+        mostrarTexto("lblResultadoCPP", "Por favor ingresa todos los datos.");
+        return;
+    }
 
+    let cuotaMensual;
+    if(interes === 0){
+        cuotaMensual = prestamo / cuotas;
+    } else {
+        cuotaMensual = prestamo * (interes * Math.pow(1 + interes, cuotas)) /
+                       (Math.pow(1 + interes, cuotas) - 1);
+    }
+
+    let totalPagar = cuotaMensual * cuotas;
     mostrarTexto(
         "lblResultadoCPP",
-        "Pago mensual: $" + pago.toFixed(2)
+        "Cuota mensual: $" + cuotaMensual.toFixed(2) +
+        " | Total a pagar: $" + totalPagar.toFixed(2)
     );
 }
 
+// ===== AMORTIZACIÓN FRANCESA =====
+// Cuota fija cada período; los intereses bajan y el capital amortizado sube.
 
-
-// TEMA 6
-function calcularFrancesa() {
-
-    let monto = recuperarFloat("txtMontoAF");
+function calcularFrancesa(){
+    let monto   = recuperarFloat("txtMontoAF");
     let interes = recuperarFloat("txtInteresAF") / 100;
-    let cuotas = recuperarInt("txtCuotasAF");
+    let cuotas  = recuperarInt("txtCuotasAF");
 
-    let pago = (monto * interes) /
-        (1 - Math.pow(1 + interes, -cuotas));
+    if(isNaN(monto) || isNaN(interes) || isNaN(cuotas)){
+        mostrarTexto("lblResultadoAF", "Por favor ingresa todos los datos.");
+        return;
+    }
 
-    mostrarTexto(
+    let cuotaFija;
+    if(interes === 0){
+        cuotaFija = monto / cuotas;
+    } else {
+        cuotaFija = monto * (interes * Math.pow(1 + interes, cuotas)) /
+                    (Math.pow(1 + interes, cuotas) - 1);
+    }
+
+    let saldo = monto;
+    let tabla = "<br><table style='width:100%;border-collapse:collapse;font-size:13px;margin-top:10px;color:#d1d5db'>";
+    tabla += "<tr style='color:#38bdf8;border-bottom:1px solid rgba(255,255,255,0.2)'>" +
+             "<th style='padding:6px'>Cuota</th>" +
+             "<th style='padding:6px'>Interés</th>" +
+             "<th style='padding:6px'>Capital</th>" +
+             "<th style='padding:6px'>Saldo</th></tr>";
+
+    for(let i = 1; i <= cuotas; i++){
+        let interesDelPeriodo = saldo * interes;
+        let capitalAmortizado = cuotaFija - interesDelPeriodo;
+        saldo -= capitalAmortizado;
+        if(saldo < 0.01) saldo = 0;
+
+        tabla += "<tr style='text-align:center;border-bottom:1px solid rgba(255,255,255,0.05)'>" +
+            "<td style='padding:5px'>" + i + "</td>" +
+            "<td style='padding:5px'>$" + interesDelPeriodo.toFixed(2) + "</td>" +
+            "<td style='padding:5px'>$" + capitalAmortizado.toFixed(2) + "</td>" +
+            "<td style='padding:5px'>$" + saldo.toFixed(2) + "</td>" +
+            "</tr>";
+    }
+    tabla += "</table>";
+
+    mostrarHTML(
         "lblResultadoAF",
-        "Cuota fija mensual: $" + pago.toFixed(2)
+        "Cuota fija: $" + cuotaFija.toFixed(2) + tabla
     );
 }
 
+// ===== AMORTIZACIÓN ALEMANA =====
+// Capital amortizado constante; 
 
-
-// TEMA 7
-function calcularAlemana() {
-
-    let monto = recuperarFloat("txtMontoAL");
+function calcularAlemana(){
+    let monto   = recuperarFloat("txtMontoAL");
     let interes = recuperarFloat("txtInteresAL") / 100;
-    let cuotas = recuperarInt("txtCuotasAL");
+    let cuotas  = recuperarInt("txtCuotasAL");
 
-    let amortizacion = monto / cuotas;
+    if(isNaN(monto) || isNaN(interes) || isNaN(cuotas)){
+        mostrarTexto("lblResultadoAL", "Por favor ingresa todos los datos.");
+        return;
+    }
 
-    let primerPago =
-        amortizacion + (monto * interes);
+    let capitalFijo = monto / cuotas;
+    let saldo       = monto;
+    let tabla       = "<br><table style='width:100%;border-collapse:collapse;font-size:13px;margin-top:10px;color:#d1d5db'>";
+    tabla += "<tr style='color:#38bdf8;border-bottom:1px solid rgba(255,255,255,0.2)'>" +
+             "<th style='padding:6px'>Cuota</th>" +
+             "<th style='padding:6px'>Capital</th>" +
+             "<th style='padding:6px'>Interés</th>" +
+             "<th style='padding:6px'>Total</th>" +
+             "<th style='padding:6px'>Saldo</th></tr>";
 
-    mostrarTexto(
+    for(let i = 1; i <= cuotas; i++){
+        let interesDelPeriodo = saldo * interes;
+        let totalCuota        = capitalFijo + interesDelPeriodo;
+        saldo -= capitalFijo;
+        if(saldo < 0.01) saldo = 0;
+
+        tabla += "<tr style='text-align:center;border-bottom:1px solid rgba(255,255,255,0.05)'>" +
+            "<td style='padding:5px'>" + i + "</td>" +
+            "<td style='padding:5px'>$" + capitalFijo.toFixed(2) + "</td>" +
+            "<td style='padding:5px'>$" + interesDelPeriodo.toFixed(2) + "</td>" +
+            "<td style='padding:5px'>$" + totalCuota.toFixed(2) + "</td>" +
+            "<td style='padding:5px'>$" + saldo.toFixed(2) + "</td>" +
+            "</tr>";
+    }
+    tabla += "</table>";
+
+    mostrarHTML(
         "lblResultadoAL",
-        "Primer pago mensual: $" + primerPago.toFixed(2)
+        "Capital por cuota: $" + capitalFijo.toFixed(2) + tabla
+    );
+}
+
+// Mostrar u ocultar aplicaciones dentro de una sección
+function mostrarAplicacion(prefijo, numero) {
+    let seleccionado = document.getElementById(prefijo + numero);
+    if (!seleccionado) return;
+
+    let contenedor = seleccionado.parentElement;
+    let aplicaciones = contenedor.querySelectorAll('.aplicacion');
+
+    aplicaciones.forEach(function(a) {
+        if (a.id !== prefijo + numero) {
+            a.classList.add('oculto');
+        }
+    });
+
+    seleccionado.classList.toggle('oculto');
+}
+ // ===== COMPARADOR DE INVERSIONES =====
+function compararInversiones() {
+    let vf1    = recuperarFloat("txtVFA");
+    let tasa1  = recuperarFloat("txtTasaA") / 100;
+    let tiempo1 = recuperarFloat("txtTiempoA");
+
+    let vf2    = recuperarFloat("txtVFB");
+    let tasa2  = recuperarFloat("txtTasaB") / 100;
+    let tiempo2 = recuperarFloat("txtTiempoB");
+
+    if (isNaN(vf1) || isNaN(tasa1) || isNaN(tiempo1) ||
+        isNaN(vf2) || isNaN(tasa2) || isNaN(tiempo2)) {
+        mostrarHTML("resultadoComparador", "⚠️ Por favor ingresa todos los datos.");
+        return;
+    }
+
+    let vpA = vf1 / Math.pow((1 + tasa1), tiempo1);
+    let vpB = vf2 / Math.pow((1 + tasa2), tiempo2);
+
+    let mensaje = "";
+    let icono   = "";
+
+    if (vpA > vpB) {
+        icono   = "✅";
+        mensaje = "La inversión <strong>A</strong> ofrece un mayor valor presente.";
+    } else if (vpB > vpA) {
+        icono   = "✅";
+        mensaje = "La inversión <strong>B</strong> ofrece un mayor valor presente.";
+    } else {
+        icono   = "⚖️";
+        mensaje = "Ambas inversiones tienen el <strong>mismo valor presente</strong>.";
+    }
+
+    mostrarHTML("resultadoComparador",
+        "<div class='filaResultado'>" +
+            "<span>Valor Presente A:</span>" +
+            "<strong>$" + vpA.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Valor Presente B:</span>" +
+            "<strong>$" + vpB.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredicto'>" + icono + " " + mensaje + "</div>"
     );
 }

@@ -6,30 +6,39 @@ function recuperaraTexto(idComponente) {
     return valorIngresado;
 }
 
-function recuperarInt(idComponente) {
+function recuperarInt(idComponente){
     let valorCaja = recuperaraTexto(idComponente);
     let valorEntero = parseInt(valorCaja);
     return valorEntero;
 }
-function recuperarFloat(idComponente) {
+
+function recuperarFloat(idComponente){
     let valorCaja = recuperaraTexto(idComponente);
     let valorFlotante = parseFloat(valorCaja);
     return valorFlotante;
 }
-function mostrarTexto(idComponente, mensaje) {
+
+function mostrarTexto(idComponente, mensaje){
     let componente;
     componente = document.getElementById(idComponente);
     componente.innerText = mensaje;
 }
-function mostrarTextoEnCaja(idComponente, mensaje) {
+
+// Nueva función para mostrar contenido HTML (tablas de amortización)
+function mostrarHTML(idComponente, mensaje){
+    let componente;
+    componente = document.getElementById(idComponente);
+    componente.innerHTML = mensaje;
+}
+
+function mostrarTextoEnCaja(idComponente, mensaje){
     let componente;
     componente = document.getElementById(idComponente);
     componente.value = mensaje;
 }
 
-function mostrarImagen(idComponente, rutaImagen) {
+function mostrarImagen(idComponente, rutaImagen){
     let componente;
     componente = document.getElementById(idComponente);
     componente.src = rutaImagen;
-
 }
