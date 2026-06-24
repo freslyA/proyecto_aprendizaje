@@ -688,3 +688,191 @@ function calcularAhorroSimple() {
         "</div>"
     );
 }
+
+// ===== SIMULADOR DE INVERSIÓN (INTERÉS COMPUESTO) =====
+
+function calcularSimulador() {
+    let capital = recuperarFloat("txtSimCapital");
+    let tasa    = recuperarFloat("txtSimTasa") / 100;
+    let tiempo  = recuperarFloat("txtSimTiempo");
+
+    if (isNaN(capital) || isNaN(tasa) || isNaN(tiempo) ||
+        capital <= 0   || tasa <= 0   || tiempo <= 0) {
+        mostrarHTML("resultadoSimulador", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let montoFinal = capital * Math.pow(1 + tasa, tiempo);
+    let ganancia   = montoFinal - capital;
+
+    mostrarHTML("resultadoSimulador",
+        "<div class='filaResultado'>" +
+            "<span>Capital inicial:</span>" +
+            "<strong>$" + capital.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Monto final:</span>" +
+            "<strong>$" + montoFinal.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Ganancia obtenida:</span>" +
+            "<strong style='color:#4ade80'>$" + ganancia.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredicto'>" +
+            "📈 Tu inversión de <strong>$" + capital.toFixed(2) + "</strong> " +
+            "crecerá a <strong>$" + montoFinal.toFixed(2) + "</strong> " +
+            "en <strong>" + tiempo + " años</strong>." +
+        "</div>"
+    );
+}
+
+// ===== META DE AHORRO (INTERÉS COMPUESTO) =====
+
+function calcularMetaIC() {
+    let capital  = recuperarFloat("txtMetaICCapital");
+    let tasa     = recuperarFloat("txtMetaICTasa") / 100;
+    let tiempo   = recuperarFloat("txtMetaICTiempo");
+    let objetivo = recuperarFloat("txtMetaICObjetivo");
+
+    if (isNaN(capital) || isNaN(tasa) || isNaN(tiempo) || isNaN(objetivo) ||
+        capital <= 0   || tasa <= 0   || tiempo <= 0   || objetivo <= 0) {
+        mostrarHTML("resultadoMetaIC", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let monto      = capital * Math.pow(1 + tasa, tiempo);
+    let diferencia = objetivo - monto;
+
+    let veredicto = "";
+    if (monto >= objetivo) {
+        veredicto =
+            "<div class='veredicto'>✅ <strong>¡Alcanzas tu meta!</strong> " +
+            "Te sobran <strong style='color:#4ade80'>$" +
+            Math.abs(diferencia).toFixed(2) + "</strong>.</div>";
+    } else {
+        veredicto =
+            "<div class='veredicto'>❌ <strong>No alcanzas tu meta.</strong> " +
+            "Te faltan <strong style='color:#f87171'>$" +
+            diferencia.toFixed(2) + "</strong>.</div>";
+    }
+
+    mostrarHTML("resultadoMetaIC",
+        "<div class='filaResultado'>" +
+            "<span>Monto acumulado:</span>" +
+            "<strong>$" + monto.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Meta deseada:</span>" +
+            "<strong>$" + objetivo.toFixed(2) + "</strong>" +
+        "</div>" +
+        veredicto
+    );
+}
+
+// ===== CRÉDITO DE ELECTRODOMÉSTICO =====
+
+function calcularElectro() {
+    let precio = recuperarFloat("txtElectroPrecio");
+    let tasa   = recuperarFloat("txtElectroTasa") / 100;
+    let cuotas = recuperarFloat("txtElectroCuotas");
+
+    if (isNaN(precio) || isNaN(tasa) || isNaN(cuotas) ||
+        precio <= 0   || cuotas <= 0) {
+        mostrarHTML("resultadoElectro", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let cuotaMensual;
+    if (tasa === 0) {
+        cuotaMensual = precio / cuotas;
+    } else {
+        cuotaMensual = precio * (tasa * Math.pow(1 + tasa, cuotas)) /
+                       (Math.pow(1 + tasa, cuotas) - 1);
+    }
+
+    let totalPagar = cuotaMensual * cuotas;
+    let totalInteres = totalPagar - precio;
+
+    mostrarHTML("resultadoElectro",
+        "<div class='filaResultado'>" +
+            "<span>Precio del producto:</span>" +
+            "<strong>$" + precio.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Número de cuotas:</span>" +
+            "<strong>" + cuotas + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Cuota mensual:</span>" +
+            "<strong>$" + cuotaMensual.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Total intereses:</span>" +
+            "<strong style='color:#f87171'>$" + totalInteres.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Total a pagar:</span>" +
+            "<strong>$" + totalPagar.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredicto'>" +
+            "🖥️ Pagarás <strong>$" + cuotaMensual.toFixed(2) + "</strong> por mes " +
+            "durante <strong>" + cuotas + " meses</strong>. " +
+            "El crédito te costará <strong style='color:#f87171'>$" +
+            totalInteres.toFixed(2) + "</strong> en intereses." +
+        "</div>"
+    );
+}
+
+// ===== CRÉDITO DE AUTOMÓVIL =====
+
+function calcularAuto() {
+    let valor  = recuperarFloat("txtAutoValor");
+    let tasa   = recuperarFloat("txtAutoTasa") / 100;
+    let cuotas = recuperarFloat("txtAutoCuotas");
+
+    if (isNaN(valor) || isNaN(tasa) || isNaN(cuotas) ||
+        valor <= 0   || cuotas <= 0) {
+        mostrarHTML("resultadoAuto", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let cuotaMensual;
+    if (tasa === 0) {
+        cuotaMensual = valor / cuotas;
+    } else {
+        cuotaMensual = valor * (tasa * Math.pow(1 + tasa, cuotas)) /
+                       (Math.pow(1 + tasa, cuotas) - 1);
+    }
+
+    let totalPagar   = cuotaMensual * cuotas;
+    let totalInteres = totalPagar - valor;
+
+    mostrarHTML("resultadoAuto",
+        "<div class='filaResultado'>" +
+            "<span>Valor del vehículo:</span>" +
+            "<strong>$" + valor.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Número de cuotas:</span>" +
+            "<strong>" + cuotas + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Cuota mensual:</span>" +
+            "<strong>$" + cuotaMensual.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Total intereses:</span>" +
+            "<strong style='color:#f87171'>$" + totalInteres.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Total a pagar:</span>" +
+            "<strong>$" + totalPagar.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='veredicto'>" +
+            "🚗 Pagarás <strong>$" + cuotaMensual.toFixed(2) + "</strong> por mes " +
+            "durante <strong>" + cuotas + " meses</strong>. " +
+            "El financiamiento te costará <strong style='color:#f87171'>$" +
+            totalInteres.toFixed(2) + "</strong> en intereses." +
+        "</div>"
+    );
+}
