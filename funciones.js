@@ -876,3 +876,71 @@ function calcularAuto() {
         "</div>"
     );
 }
+
+// ===== TABLA DE AMORTIZACIÓN FRANCESA =====
+
+function generarTablaFrancesa() {
+    let monto  = recuperarFloat("txtTFMonto");
+    let tasaAnual  = recuperarFloat("txtTFTasa") / 100;
+    let tasa       = tasaAnual / 12;
+    let cuotas = recuperarInt("txtTFCuotas");
+
+    if (isNaN(monto) || isNaN(tasa) || isNaN(cuotas) ||
+        monto <= 0   || tasa <= 0   || cuotas <= 0) {
+        mostrarHTML("resultadoTF", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let cuotaFija = monto * (tasa * Math.pow(1 + tasa, cuotas)) /
+                    (Math.pow(1 + tasa, cuotas) - 1);
+
+    let totalPagar   = cuotaFija * cuotas;
+    let totalInteres = totalPagar - monto;
+    let saldo        = monto;
+
+    let filas = "";
+    for (let i = 1; i <= cuotas; i++) {
+        let interesMes  = saldo * tasa;
+        let capitalMes  = cuotaFija - interesMes;
+        saldo          -= capitalMes;
+        if (saldo < 0.01) saldo = 0;
+
+        filas +=
+            "<tr>" +
+                "<td>" + i + "</td>" +
+                "<td>$" + cuotaFija.toFixed(2) + "</td>" +
+                "<td>$" + capitalMes.toFixed(2) + "</td>" +
+                "<td style='color:#f87171'>$" + interesMes.toFixed(2) + "</td>" +
+                "<td>$" + saldo.toFixed(2) + "</td>" +
+            "</tr>";
+    }
+
+    mostrarHTML("resultadoTF",
+        "<div class='filaResultado'>" +
+            "<span>Cuota fija mensual:</span>" +
+            "<strong>$" + cuotaFija.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Total intereses:</span>" +
+            "<strong style='color:#f87171'>$" + totalInteres.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Total a pagar:</span>" +
+            "<strong>$" + totalPagar.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='tablaContenedor'>" +
+            "<table class='tablaAmortizacion'>" +
+                "<thead>" +
+                    "<tr>" +
+                        "<th>Mes</th>" +
+                        "<th>Cuota</th>" +
+                        "<th>Capital</th>" +
+                        "<th>Interés</th>" +
+                        "<th>Saldo</th>" +
+                    "</tr>" +
+                "</thead>" +
+                "<tbody>" + filas + "</tbody>" +
+            "</table>" +
+        "</div>"
+    );
+}

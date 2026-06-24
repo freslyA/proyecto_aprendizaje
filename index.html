@@ -686,20 +686,25 @@ console.log("Cuota fija: $" + cuotaFija.toFixed(2));
 
                 <!-- APLICACION -->
                 <div class="contenido app6">
-                    <h3 class="subtitulo">Aplicación</h3>
-                    <p>
-                        La amortización francesa es la más utilizada en el sistema financiero porque:
-                    </p>
-                    <ul>
-                        <li>Facilita la planificación del presupuesto al tener cuotas fijas.</li>
-                        <li>Es el sistema estándar en créditos hipotecarios y vehiculares.</li>
-                        <li>Permite al deudor saber exactamente cuánto pagará cada mes.</li>
-                        <li>Es usada por la mayoría de bancos y cooperativas en Ecuador y Latinoamérica.</li>
-                    </ul>
-                    <p>
-                        Su principal ventaja es la predictibilidad: el deudor nunca se sorprende
-                        con cuotas diferentes, lo que facilita la organización financiera personal.
-                    </p>
+                    <h3 class="subtitulo">Aplicaciones</h3>
+
+                    <div class="botonesAplicacion">
+                        <button onclick="mostrarAplicacion('ap6_', 1)">Tabla Francesa</button>
+                    </div>
+
+                    <div id="ap6_1" class="aplicacion oculto">
+                        <h3 class="subtitulo">Tabla de Amortización Francesa</h3>
+                        <div class="grupoProyecto">
+                            <label>Monto del préstamo ($)</label>
+                            <input type="number" id="txtTFMonto" placeholder="Ej: 5000">
+                            <label>Interés anual (%)</label>
+                            <input type="number" id="txtTFTasa" placeholder="Ej: 12">
+                            <label>Número de cuotas</label>
+                            <input type="number" id="txtTFCuotas" placeholder="Ej: 12">
+                        </div>
+                        <button class="btnComparar" onclick="generarTablaFrancesa()">Generar Tabla</button>
+                        <div id="resultadoTF" class="resultadoComparador"></div>
+                    </div>
                 </div>
 
             </div>
