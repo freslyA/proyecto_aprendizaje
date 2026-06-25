@@ -764,20 +764,25 @@ for(let i = 1; i <= cuotas; i++){
 
                 <!-- APLICACION -->
                 <div class="contenido app7">
-                    <h3 class="subtitulo">Aplicación</h3>
-                    <p>
-                        La amortización alemana es preferida en ciertos contextos porque:
-                    </p>
-                    <ul>
-                        <li>El total de intereses pagados es menor que en el sistema francés.</li>
-                        <li>Se usa en préstamos empresariales donde se espera mayor liquidez inicial.</li>
-                        <li>Beneficia a quienes pueden pagar cuotas más altas al inicio.</li>
-                        <li>Es común en financiamientos de maquinaria e infraestructura.</li>
-                    </ul>
-                    <p>
-                        Su principal ventaja frente al sistema francés es el ahorro en intereses totales,
-                        ya que el saldo de la deuda baja más rápido al amortizar capital constante desde el inicio.
-                    </p>
+                    <h3 class="subtitulo">Aplicaciones</h3>
+
+                    <div class="botonesAplicacion">
+                        <button onclick="mostrarAplicacion('ap7_', 1)">Tabla Alemana</button>
+                    </div>
+
+                    <div id="ap7_1" class="aplicacion oculto">
+                        <h3 class="subtitulo">Tabla de Amortización Alemana</h3>
+                        <div class="grupoProyecto">
+                            <label>Monto del préstamo ($)</label>
+                            <input type="number" id="txtTAMonto" placeholder="Ej: 5000">
+                            <label>Interés anual (%)</label>
+                            <input type="number" id="txtTATasa" placeholder="Ej: 12">
+                            <label>Número de cuotas</label>
+                            <input type="number" id="txtTACuotas" placeholder="Ej: 5">
+                        </div>
+                        <button class="btnComparar" onclick="generarTablaAlemana()">Generar Tabla</button>
+                        <div id="resultadoTA" class="resultadoComparador"></div>
+                    </div>
                 </div>
 
             </div>
@@ -857,42 +862,30 @@ for(let i = 1; i <= cuotas; i++){
     </section>
 
     <!-- ===== TEST ===== -->
-    <section id="test">
+   <section id="test">
         <div class="tarjeta">
             <h2>Test</h2>
 
-            <div class="pregunta">
-                <h3>1. El valor presente representa el dinero actual de una cantidad futura.</h3>
-                <label><input type="radio" name="p1" value="v"> Verdadero</label>
-                <label><input type="radio" name="p1" value="f"> Falso</label>
+            <div class="progresoContenedor">
+                <div class="progresoTexto">
+                    <span id="lblProgreso">0 de 5 respondidas</span>
+                    <span id="lblPorcentajeProgreso">0%</span>
+                </div>
+                <div class="barraFondo">
+                    <div class="barraRelleno" id="barraProgreso"></div>
+                </div>
             </div>
 
-            <div class="pregunta">
-                <h3>2. El valor futuro calcula cuánto dinero habrá en el futuro.</h3>
-                <label><input type="radio" name="p2" value="v"> Verdadero</label>
-                <label><input type="radio" name="p2" value="f"> Falso</label>
-            </div>
-
-            <div class="pregunta">
-                <h3>3. En el interés simple, los intereses se calculan solo sobre el capital inicial.</h3>
-                <label><input type="radio" name="p3" value="v"> Verdadero</label>
-                <label><input type="radio" name="p3" value="f"> Falso</label>
-            </div>
-
-            <div class="pregunta">
-                <h3>4. En el interés compuesto, los intereses generan nuevos intereses.</h3>
-                <label><input type="radio" name="p4" value="v"> Verdadero</label>
-                <label><input type="radio" name="p4" value="f"> Falso</label>
-            </div>
-
-            <div class="pregunta">
-                <h3>5. En la amortización alemana las cuotas aumentan cada mes.</h3>
-                <label><input type="radio" name="p5" value="v"> Verdadero</label>
-                <label><input type="radio" name="p5" value="f"> Falso</label>
-            </div>
+            <div id="contenedorPreguntas"></div>
 
             <button class="btn" onclick="calificar()">Calificar</button>
+
             <div id="resultado"></div>
+
+            <button class="btnReiniciar" id="btnReiniciar"
+                    onclick="reiniciarTest()" style="display:none">
+                🔄 Reiniciar Test
+            </button>
         </div>
     </section>
 

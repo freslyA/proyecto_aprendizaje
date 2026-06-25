@@ -7,12 +7,17 @@ function abrirMenu(){
 
 // ===== MOSTRAR SECCION =====
 
-function mostrarSeccion(idSeccion){
+function mostrarSeccion(idSeccion) {
     let secciones = document.querySelectorAll("section");
-    for(let i = 0; i < secciones.length; i++){
+    for (let i = 0; i < secciones.length; i++) {
         secciones[i].style.display = "none";
     }
     document.getElementById(idSeccion).style.display = "block";
+
+    // Renderizar test con preguntas mezcladas al entrar
+    if (idSeccion === "test") {
+        renderizarTest();
+    }
 }
 
 // ===== MOSTRAR PARTE (TABS dentro de una sección) =====
@@ -32,43 +37,185 @@ function mostrarParte(idSeccion, claseMostrar){
     }
 }
 
-// ===== CALIFICAR TEST =====
+// ===== PREGUNTAS DEL TEST =====
 
-function calificar(){
-    let puntos = 0;
+let preguntasTest = [
+    {
+        texto: "El valor presente representa el dinero actual de una cantidad futura.",
+        respuesta: "v",
+        explicacion: "El valor presente permite conocer cuánto vale hoy una cantidad de dinero que se recibirá en el futuro, descontando la tasa de interés."
+    },
+    {
+        texto: "El valor futuro calcula cuánto dinero habrá en el futuro.",
+        respuesta: "v",
+        explicacion: "El valor futuro proyecta cuánto valdrá una suma de dinero después de un período, considerando la tasa de interés aplicada."
+    },
+    {
+        texto: "En el interés simple, los intereses se calculan solo sobre el capital inicial.",
+        respuesta: "v",
+        explicacion: "En el interés simple los intereses no se acumulan al capital, por lo que siempre se calculan sobre el monto original."
+    },
+    {
+        texto: "En el interés compuesto, los intereses generan nuevos intereses.",
+        respuesta: "v",
+        explicacion: "En el interés compuesto los intereses de cada período se suman al capital, generando intereses sobre intereses en los períodos siguientes."
+    },
+    {
+        texto: "En la amortización alemana las cuotas aumentan cada mes.",
+        respuesta: "f",
+        explicacion: "Las cuotas DISMINUYEN cada mes porque el capital amortizado es constante y los intereses se calculan sobre un saldo cada vez menor."
+    }
+];
 
-    let p1 = document.querySelector('input[name="p1"]:checked');
-    let p2 = document.querySelector('input[name="p2"]:checked');
-    let p3 = document.querySelector('input[name="p3"]:checked');
-    let p4 = document.querySelector('input[name="p4"]:checked');
-    let p5 = document.querySelector('input[name="p5"]:checked');
+let preguntasActuales = [];
 
-    if(p1 && p1.value == "v") puntos++;
-    if(p2 && p2.value == "v") puntos++;
-    if(p3 && p3.value == "v") puntos++;
-    if(p4 && p4.value == "v") puntos++;
-    if(p5 && p5.value == "f") puntos++; // La alemana DISMINUYE → "aumentan" es FALSO
+// ===== MEZCLAR PREGUNTAS =====
 
-    document.getElementById("resultado").innerHTML =
-        "Tu nota es: " + puntos + " / 5";
+function mezclarPreguntas(arr) {
+    let copia = [...arr];
+    for (let i = copia.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = copia[i];
+        copia[i] = copia[j];
+        copia[j] = temp;
+    }
+    return copia;
 }
 
-// ===== VALOR PRESENTE =====
-// Fórmula: VP = VF / (1 + i)^n
-// El usuario ingresa la tasa como porcentaje (ej: 8 para 8%)
+// ===== RENDERIZAR TEST =====
 
-function calcularValorPresente(){
-    let valorFuturo = recuperarFloat("txtValorFuturoVP");
-    let interes     = recuperarFloat("txtInteresVP") / 100;
-    let tiempo      = recuperarFloat("txtTiempoVP");
+function renderizarTest() {
+    preguntasActuales = mezclarPreguntas(preguntasTest);
+    let contenedor = document.getElementById("contenedorPreguntas");
+    contenedor.innerHTML = "";
 
-    if(isNaN(valorFuturo) || isNaN(interes) || isNaN(tiempo)){
-        mostrarTexto("lblResultadoVP", "Por favor ingresa todos los datos.");
-        return;
+    preguntasActuales.forEach(function(pregunta, index) {
+        let num = index + 1;
+        contenedor.innerHTML +=
+            "<div class='pregunta' id='pregunta" + index + "'>" +
+                "<h3>" + num + ". " + pregunta.texto + "</h3>" +
+                "<label>" +
+                    "<input type='radio' name='p" + index + "' value='v' " +
+                    "onchange='actualizarProgreso()'> Verdadero" +
+                "</label>" +
+                "<label>" +
+                    "<input type='radio' name='p" + index + "' value='f' " +
+                    "onchange='actualizarProgreso()'> Falso" +
+                "</label>" +
+            "</div>";
+    });
+
+    document.getElementById("resultado").innerHTML        = "";
+    document.getElementById("barraProgreso").style.width  = "0%";
+    document.getElementById("lblProgreso").innerText      = "0 de 5 respondidas";
+    document.getElementById("lblPorcentajeProgreso").innerText = "0%";
+    document.getElementById("btnReiniciar").style.display = "none";
+}
+
+// ===== ACTUALIZAR BARRA DE PROGRESO =====
+
+function actualizarProgreso() {
+    let total       = preguntasActuales.length;
+    let respondidas = 0;
+
+    for (let i = 0; i < total; i++) {
+        let sel = document.querySelector('input[name="p' + i + '"]:checked');
+        if (sel) respondidas++;
     }
 
-    let vp = valorFuturo / Math.pow((1 + interes), tiempo);
-    mostrarTexto("lblResultadoVP", "Valor Presente: $" + vp.toFixed(2));
+    let porcentaje = Math.round((respondidas / total) * 100);
+    document.getElementById("barraProgreso").style.width       = porcentaje + "%";
+    document.getElementById("lblProgreso").innerText           = respondidas + " de " + total + " respondidas";
+    document.getElementById("lblPorcentajeProgreso").innerText = porcentaje + "%";
+}
+
+// ===== CALIFICAR =====
+
+function calificar() {
+    let total  = preguntasActuales.length;
+    let puntos = 0;
+    let detalle = "";
+
+    preguntasActuales.forEach(function(pregunta, index) {
+        let sel      = document.querySelector('input[name="p' + index + '"]:checked');
+        let correcta = sel && sel.value === pregunta.respuesta;
+
+        if (correcta) {
+            puntos++;
+            detalle +=
+                "<div class='detalleItem correcto'>" +
+                    "<strong>✅ Pregunta " + (index + 1) + " correcta</strong>" +
+                    "<p class='explicacionTest'>" + pregunta.explicacion + "</p>" +
+                "</div>";
+        } else {
+            let respUsuario  = sel ? (sel.value === "v" ? "Verdadero" : "Falso") : "Sin respuesta";
+            let respCorrecta = pregunta.respuesta === "v" ? "Verdadero" : "Falso";
+            detalle +=
+                "<div class='detalleItem incorrecto'>" +
+                    "<strong>❌ Pregunta " + (index + 1) + " incorrecta</strong>" +
+                    "<p>Tu respuesta: <em>" + respUsuario + "</em> &nbsp;|&nbsp; " +
+                    "Correcta: <em>" + respCorrecta + "</em></p>" +
+                    "<p class='explicacionTest'>" + pregunta.explicacion + "</p>" +
+                "</div>";
+        }
+    });
+
+    let porcentaje = Math.round((puntos / total) * 100);
+
+    let nivel      = "";
+    let colorNivel = "";
+    if (porcentaje >= 90) {
+        nivel      = "🏆 Experto";
+        colorNivel = "#4ade80";
+    } else if (porcentaje >= 70) {
+        nivel      = "🎖️ Intermedio";
+        colorNivel = "#38bdf8";
+    } else {
+        nivel      = "📚 Principiante";
+        colorNivel = "#f87171";
+    }
+
+    let mensaje = "";
+    if (puntos === total) {
+        mensaje = "¡Excelente trabajo! Dominas todos los conceptos.";
+    } else if (puntos >= 3) {
+        mensaje = "¡Buen trabajo! Dominas la mayoría de conceptos.";
+    } else {
+        mensaje = "Necesitas repasar los temas. ¡Tú puedes!";
+    }
+
+    mostrarHTML("resultado",
+        "<div class='tarjetaResultado'>" +
+            "<h3 style='color:#38bdf8;margin-bottom:15px'>📊 Resultados</h3>" +
+            "<div class='filaResultado'>" +
+                "<span>✔ Correctas:</span>" +
+                "<strong style='color:#4ade80'>" + puntos + " / " + total + "</strong>" +
+            "</div>" +
+            "<div class='filaResultado'>" +
+                "<span>❌ Incorrectas:</span>" +
+                "<strong style='color:#f87171'>" + (total - puntos) + " / " + total + "</strong>" +
+            "</div>" +
+            "<div class='filaResultado'>" +
+                "<span>📊 Porcentaje:</span>" +
+                "<strong>" + porcentaje + "%</strong>" +
+            "</div>" +
+            "<div class='filaResultado'>" +
+                "<span>🏅 Nivel:</span>" +
+                "<strong style='color:" + colorNivel + "'>" + nivel + "</strong>" +
+            "</div>" +
+            "<div class='veredicto'>" + mensaje + "</div>" +
+        "</div>" +
+        "<h3 style='color:#38bdf8;margin:25px 0 12px'>Detalle por pregunta</h3>" +
+        detalle
+    );
+
+    document.getElementById("btnReiniciar").style.display = "block";
+}
+
+// ===== REINICIAR TEST =====
+
+function reiniciarTest() {
+    renderizarTest();
 }
 
 // ===== VALOR FUTURO =====
@@ -936,6 +1083,75 @@ function generarTablaFrancesa() {
                         "<th>Cuota</th>" +
                         "<th>Capital</th>" +
                         "<th>Interés</th>" +
+                        "<th>Saldo</th>" +
+                    "</tr>" +
+                "</thead>" +
+                "<tbody>" + filas + "</tbody>" +
+            "</table>" +
+        "</div>"
+    );
+}
+
+// ===== TABLA DE AMORTIZACIÓN ALEMANA =====
+
+function generarTablaAlemana() {
+    let monto  = recuperarFloat("txtTAMonto");
+    let tasaAnual = recuperarFloat("txtTATasa") / 100;
+    let cuotas = recuperarInt("txtTACuotas");
+    let tasa   = tasaAnual / 12;
+
+    if (isNaN(monto)    || isNaN(tasaAnual) || isNaN(cuotas) ||
+        monto <= 0      || tasaAnual <= 0   || cuotas <= 0) {
+        mostrarHTML("resultadoTA", "⚠️ Por favor ingresa todos los datos correctamente.");
+        return;
+    }
+
+    let capitalFijo  = monto / cuotas;
+    let saldo        = monto;
+    let totalInteres = 0;
+    let totalPagar   = 0;
+
+    let filas = "";
+    for (let i = 1; i <= cuotas; i++) {
+        let interesMes = saldo * tasa;
+        let cuotaMes   = capitalFijo + interesMes;
+        saldo         -= capitalFijo;
+        if (saldo < 0.01) saldo = 0;
+
+        totalInteres += interesMes;
+        totalPagar   += cuotaMes;
+
+        filas +=
+            "<tr>" +
+                "<td>" + i + "</td>" +
+                "<td>$" + capitalFijo.toFixed(2) + "</td>" +
+                "<td style='color:#f87171'>$" + interesMes.toFixed(2) + "</td>" +
+                "<td>$" + cuotaMes.toFixed(2) + "</td>" +
+                "<td>$" + saldo.toFixed(2) + "</td>" +
+            "</tr>";
+    }
+
+    mostrarHTML("resultadoTA",
+        "<div class='filaResultado'>" +
+            "<span>Capital por cuota:</span>" +
+            "<strong>$" + capitalFijo.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Total intereses:</span>" +
+            "<strong style='color:#f87171'>$" + totalInteres.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Total a pagar:</span>" +
+            "<strong>$" + totalPagar.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='tablaContenedor'>" +
+            "<table class='tablaAmortizacion'>" +
+                "<thead>" +
+                    "<tr>" +
+                        "<th>Mes</th>" +
+                        "<th>Capital</th>" +
+                        "<th>Interés</th>" +
+                        "<th>Cuota</th>" +
                         "<th>Saldo</th>" +
                     "</tr>" +
                 "</thead>" +
