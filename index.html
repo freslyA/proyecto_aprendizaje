@@ -27,7 +27,6 @@
         <button onclick="mostrarSeccion('seccion6')">Tabla de Amortización Francesa</button>
         <button onclick="mostrarSeccion('seccion7')">Tabla de Amortización Alemana</button>
         <button onclick="mostrarSeccion('test')">Test</button>
-        <button onclick="mostrarSeccion('calculadoras')">Calculadoras</button>
     </div>
 
     <!-- ===== TITULO ===== -->
@@ -783,78 +782,6 @@ for(let i = 1; i <= cuotas; i++){
                         <button class="btnComparar" onclick="generarTablaAlemana()">Generar Tabla</button>
                         <div id="resultadoTA" class="resultadoComparador"></div>
                     </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CALCULADORAS ===== -->
-    <section id="calculadoras">
-        <div class="tarjeta">
-            <div class="contenedorCalculadoras">
-
-                <div class="tarjetaCalculadora">
-                    <h2>Valor Presente</h2>
-                    <input type="number" id="txtValorFuturoVP" placeholder="Valor Futuro">
-                    <input type="number" id="txtInteresVP" placeholder="Tasa de Interés (%)">
-                    <input type="number" id="txtTiempoVP" placeholder="Tiempo en años">
-                    <button onclick="calcularValorPresente()">Calcular</button>
-                    <p id="lblResultadoVP"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Valor Futuro</h2>
-                    <input type="number" id="txtCapitalInicialVF" placeholder="Capital Inicial">
-                    <input type="number" id="txtInteresVF" placeholder="Tasa de Interés (%)">
-                    <input type="number" id="txtTiempoVF" placeholder="Tiempo en años">
-                    <button onclick="calcularValorFuturo()">Calcular</button>
-                    <p id="lblResultadoVF"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Interés Simple</h2>
-                    <input type="number" id="txtCapitalIS" placeholder="Capital Inicial">
-                    <input type="number" id="txtInteresIS" placeholder="Tasa de Interés (%)">
-                    <input type="number" id="txtTiempoIS" placeholder="Tiempo en años">
-                    <button onclick="calcularInteresSimple()">Calcular</button>
-                    <p id="lblResultadoIS"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Interés Compuesto</h2>
-                    <input type="number" id="txtCapitalIC" placeholder="Capital Inicial">
-                    <input type="number" id="txtInteresIC" placeholder="Tasa de Interés (%)">
-                    <input type="number" id="txtTiempoIC" placeholder="Tiempo en años">
-                    <button onclick="calcularInteresCompuesto()">Calcular</button>
-                    <p id="lblResultadoIC"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Cuotas y Pagos Periódicos</h2>
-                    <input type="number" id="txtPrestamoCPP" placeholder="Monto del préstamo">
-                    <input type="number" id="txtInteresCPP" placeholder="Interés mensual (%)">
-                    <input type="number" id="txtMesesCPP" placeholder="Número de cuotas">
-                    <button onclick="calcularCuotas()">Calcular</button>
-                    <p id="lblResultadoCPP"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Amortización Francesa</h2>
-                    <input type="number" id="txtMontoAF" placeholder="Monto del préstamo">
-                    <input type="number" id="txtInteresAF" placeholder="Interés mensual (%)">
-                    <input type="number" id="txtCuotasAF" placeholder="Número de cuotas">
-                    <button onclick="calcularFrancesa()">Calcular</button>
-                    <p id="lblResultadoAF"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Amortización Alemana</h2>
-                    <input type="number" id="txtMontoAL" placeholder="Monto del préstamo">
-                    <input type="number" id="txtInteresAL" placeholder="Interés mensual (%)">
-                    <input type="number" id="txtCuotasAL" placeholder="Número de cuotas">
-                    <button onclick="calcularAlemana()">Calcular</button>
-                    <p id="lblResultadoAL"></p>
                 </div>
 
             </div>
