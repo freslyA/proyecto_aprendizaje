@@ -407,21 +407,40 @@ console.log("Interés Simple: $" + interesSimple.toFixed(2));
 
                 <!-- APLICACION -->
                 <div class="contenido app3">
-                    <h3 class="subtitulo">Aplicación</h3>
-                    <p>
-                        El interés simple se usa frecuentemente en:
-                    </p>
-                    <ul>
-                        <li>Préstamos personales a corto plazo.</li>
-                        <li>Créditos de consumo con plazos menores a un año.</li>
-                        <li>Cálculo de multas o recargos por pagos atrasados.</li>
-                        <li>Inversiones básicas en cooperativas o financieras pequeñas.</li>
-                    </ul>
-                    <p>
-                        Por ejemplo, si prestas $2,000 a un amigo al 5% anual por 6 meses,
-                        el interés que recibirás será: IS = 2000 * 0.05 * 0.5 = $50.
-                        Es un cálculo directo y fácil de entender para ambas partes.
-                    </p>
+                    <h3 class="subtitulo">Aplicaciones</h3>
+
+                    <div class="botonesAplicacion">
+                        <button onclick="mostrarAplicacion('ap3_', 1)">Préstamo Personal</button>
+                        <button onclick="mostrarAplicacion('ap3_', 2)">Ahorro Simple</button>
+                    </div>
+
+                    <div id="ap3_1" class="aplicacion oculto">
+                        <h3 class="subtitulo">Préstamo Personal</h3>
+                        <div class="grupoProyecto">
+                            <label>Monto prestado ($)</label>
+                            <input type="number" id="txtPrestamoCapital" placeholder="Ej: 1000">
+                            <label>Interés (%)</label>
+                            <input type="number" id="txtPrestamoTasa" placeholder="Ej: 10">
+                            <label>Tiempo (años)</label>
+                            <input type="number" id="txtPrestamoTiempo" placeholder="Ej: 2">
+                        </div>
+                        <button class="btnComparar" onclick="calcularPrestamo()">Calcular</button>
+                        <div id="resultadoPrestamo" class="resultadoComparador"></div>
+                    </div>
+
+                    <div id="ap3_2" class="aplicacion oculto">
+                        <h3 class="subtitulo">Ahorro Simple</h3>
+                        <div class="grupoProyecto">
+                            <label>Dinero ahorrado ($)</label>
+                            <input type="number" id="txtAhorroSimpleCapital" placeholder="Ej: 500">
+                            <label>Interés (%)</label>
+                            <input type="number" id="txtAhorroSimpleTasa" placeholder="Ej: 8">
+                            <label>Tiempo (años)</label>
+                            <input type="number" id="txtAhorroSimpleTiempo" placeholder="Ej: 3">
+                        </div>
+                        <button class="btnComparar" onclick="calcularAhorroSimple()">Calcular</button>
+                        <div id="resultadoAhorroSimple" class="resultadoComparador"></div>
+                    </div>
                 </div>
 
             </div>
@@ -486,21 +505,42 @@ console.log("Monto: $" + monto.toFixed(2));
 
                 <!-- APLICACION -->
                 <div class="contenido app4">
-                    <h3 class="subtitulo">Aplicación</h3>
-                    <p>
-                        El interés compuesto está presente en muchas situaciones financieras:
-                    </p>
-                    <ul>
-                        <li>Cuentas de ahorro bancarias que capitalizan intereses mensualmente.</li>
-                        <li>Fondos de inversión y planes de retiro a largo plazo.</li>
-                        <li>Tarjetas de crédito con deuda acumulada mes a mes.</li>
-                        <li>Préstamos hipotecarios donde los intereses se recalculan periódicamente.</li>
-                    </ul>
-                    <p>
-                        La clave del interés compuesto es el tiempo: mientras más años transcurren,
-                        mayor es el efecto de "intereses sobre intereses". Por eso se le llama
-                        la "octava maravilla del mundo" según se atribuye a Einstein.
-                    </p>
+                    <h3 class="subtitulo">Aplicaciones</h3>
+
+                    <div class="botonesAplicacion">
+                        <button onclick="mostrarAplicacion('ap4_', 1)">Simulador de Inversión</button>
+                        <button onclick="mostrarAplicacion('ap4_', 2)">Meta de Ahorro</button>
+                    </div>
+
+                    <div id="ap4_1" class="aplicacion oculto">
+                        <h3 class="subtitulo">Simulador de Inversión</h3>
+                        <div class="grupoProyecto">
+                            <label>Capital Inicial ($)</label>
+                            <input type="number" id="txtSimCapital" placeholder="Ej: 5000">
+                            <label>Interés (%)</label>
+                            <input type="number" id="txtSimTasa" placeholder="Ej: 10">
+                            <label>Tiempo (años)</label>
+                            <input type="number" id="txtSimTiempo" placeholder="Ej: 5">
+                        </div>
+                        <button class="btnComparar" onclick="calcularSimulador()">Calcular</button>
+                        <div id="resultadoSimulador" class="resultadoComparador"></div>
+                    </div>
+
+                    <div id="ap4_2" class="aplicacion oculto">
+                        <h3 class="subtitulo">Meta de Ahorro</h3>
+                        <div class="grupoProyecto">
+                            <label>Dinero Inicial ($)</label>
+                            <input type="number" id="txtMetaICCapital" placeholder="Ej: 3000">
+                            <label>Interés (%)</label>
+                            <input type="number" id="txtMetaICTasa" placeholder="Ej: 8">
+                            <label>Tiempo (años)</label>
+                            <input type="number" id="txtMetaICTiempo" placeholder="Ej: 6">
+                            <label>Meta ($)</label>
+                            <input type="number" id="txtMetaICObjetivo" placeholder="Ej: 5000">
+                        </div>
+                        <button class="btnComparar" onclick="calcularMetaIC()">Calcular</button>
+                        <div id="resultadoMetaIC" class="resultadoComparador"></div>
+                    </div>
                 </div>
 
             </div>
@@ -558,20 +598,40 @@ console.log("Cuota mensual: $" + cuotaMensual.toFixed(2));
 
                 <!-- APLICACION -->
                 <div class="contenido app5">
-                    <h3 class="subtitulo">Aplicación</h3>
-                    <p>
-                        Las cuotas periódicas se usan en muchos contextos del día a día:
-                    </p>
-                    <ul>
-                        <li>Compra de electrodomésticos, celulares o vehículos a crédito.</li>
-                        <li>Pago de matrículas universitarias divididas por meses.</li>
-                        <li>Suscripciones mensuales a servicios (streaming, gimnasio, etc.).</li>
-                        <li>Créditos de consumo en tiendas departamentales.</li>
-                    </ul>
-                    <p>
-                        Conocer la fórmula de cuota fija permite comparar ofertas de financiamiento
-                        y elegir la que tenga menor costo total, no solo la cuota más baja.
-                    </p>
+                    <h3 class="subtitulo">Aplicaciones</h3>
+
+                    <div class="botonesAplicacion">
+                        <button onclick="mostrarAplicacion('ap5_', 1)">Crédito Electrodoméstico</button>
+                        <button onclick="mostrarAplicacion('ap5_', 2)">Crédito Automóvil</button>
+                    </div>
+
+                    <div id="ap5_1" class="aplicacion oculto">
+                        <h3 class="subtitulo">Crédito de Electrodoméstico</h3>
+                        <div class="grupoProyecto">
+                            <label>Precio del producto ($)</label>
+                            <input type="number" id="txtElectroPrecio" placeholder="Ej: 1200">
+                            <label>Interés mensual (%)</label>
+                            <input type="number" id="txtElectroTasa" placeholder="Ej: 2">
+                            <label>Número de cuotas</label>
+                            <input type="number" id="txtElectroCuotas" placeholder="Ej: 12">
+                        </div>
+                        <button class="btnComparar" onclick="calcularElectro()">Calcular</button>
+                        <div id="resultadoElectro" class="resultadoComparador"></div>
+                    </div>
+
+                    <div id="ap5_2" class="aplicacion oculto">
+                        <h3 class="subtitulo">Crédito de Automóvil</h3>
+                        <div class="grupoProyecto">
+                            <label>Valor del vehículo ($)</label>
+                            <input type="number" id="txtAutoValor" placeholder="Ej: 18000">
+                            <label>Interés mensual (%)</label>
+                            <input type="number" id="txtAutoTasa" placeholder="Ej: 1.5">
+                            <label>Número de cuotas</label>
+                            <input type="number" id="txtAutoCuotas" placeholder="Ej: 60">
+                        </div>
+                        <button class="btnComparar" onclick="calcularAuto()">Calcular</button>
+                        <div id="resultadoAuto" class="resultadoComparador"></div>
+                    </div>
                 </div>
 
             </div>
@@ -626,20 +686,25 @@ console.log("Cuota fija: $" + cuotaFija.toFixed(2));
 
                 <!-- APLICACION -->
                 <div class="contenido app6">
-                    <h3 class="subtitulo">Aplicación</h3>
-                    <p>
-                        La amortización francesa es la más utilizada en el sistema financiero porque:
-                    </p>
-                    <ul>
-                        <li>Facilita la planificación del presupuesto al tener cuotas fijas.</li>
-                        <li>Es el sistema estándar en créditos hipotecarios y vehiculares.</li>
-                        <li>Permite al deudor saber exactamente cuánto pagará cada mes.</li>
-                        <li>Es usada por la mayoría de bancos y cooperativas en Ecuador y Latinoamérica.</li>
-                    </ul>
-                    <p>
-                        Su principal ventaja es la predictibilidad: el deudor nunca se sorprende
-                        con cuotas diferentes, lo que facilita la organización financiera personal.
-                    </p>
+                    <h3 class="subtitulo">Aplicaciones</h3>
+
+                    <div class="botonesAplicacion">
+                        <button onclick="mostrarAplicacion('ap6_', 1)">Tabla Francesa</button>
+                    </div>
+
+                    <div id="ap6_1" class="aplicacion oculto">
+                        <h3 class="subtitulo">Tabla de Amortización Francesa</h3>
+                        <div class="grupoProyecto">
+                            <label>Monto del préstamo ($)</label>
+                            <input type="number" id="txtTFMonto" placeholder="Ej: 5000">
+                            <label>Interés anual (%)</label>
+                            <input type="number" id="txtTFTasa" placeholder="Ej: 12">
+                            <label>Número de cuotas</label>
+                            <input type="number" id="txtTFCuotas" placeholder="Ej: 12">
+                        </div>
+                        <button class="btnComparar" onclick="generarTablaFrancesa()">Generar Tabla</button>
+                        <div id="resultadoTF" class="resultadoComparador"></div>
+                    </div>
                 </div>
 
             </div>
@@ -699,20 +764,25 @@ for(let i = 1; i <= cuotas; i++){
 
                 <!-- APLICACION -->
                 <div class="contenido app7">
-                    <h3 class="subtitulo">Aplicación</h3>
-                    <p>
-                        La amortización alemana es preferida en ciertos contextos porque:
-                    </p>
-                    <ul>
-                        <li>El total de intereses pagados es menor que en el sistema francés.</li>
-                        <li>Se usa en préstamos empresariales donde se espera mayor liquidez inicial.</li>
-                        <li>Beneficia a quienes pueden pagar cuotas más altas al inicio.</li>
-                        <li>Es común en financiamientos de maquinaria e infraestructura.</li>
-                    </ul>
-                    <p>
-                        Su principal ventaja frente al sistema francés es el ahorro en intereses totales,
-                        ya que el saldo de la deuda baja más rápido al amortizar capital constante desde el inicio.
-                    </p>
+                    <h3 class="subtitulo">Aplicaciones</h3>
+
+                    <div class="botonesAplicacion">
+                        <button onclick="mostrarAplicacion('ap7_', 1)">Tabla Alemana</button>
+                    </div>
+
+                    <div id="ap7_1" class="aplicacion oculto">
+                        <h3 class="subtitulo">Tabla de Amortización Alemana</h3>
+                        <div class="grupoProyecto">
+                            <label>Monto del préstamo ($)</label>
+                            <input type="number" id="txtTAMonto" placeholder="Ej: 5000">
+                            <label>Interés anual (%)</label>
+                            <input type="number" id="txtTATasa" placeholder="Ej: 12">
+                            <label>Número de cuotas</label>
+                            <input type="number" id="txtTACuotas" placeholder="Ej: 5">
+                        </div>
+                        <button class="btnComparar" onclick="generarTablaAlemana()">Generar Tabla</button>
+                        <div id="resultadoTA" class="resultadoComparador"></div>
+                    </div>
                 </div>
 
             </div>
@@ -792,42 +862,30 @@ for(let i = 1; i <= cuotas; i++){
     </section>
 
     <!-- ===== TEST ===== -->
-    <section id="test">
+   <section id="test">
         <div class="tarjeta">
             <h2>Test</h2>
 
-            <div class="pregunta">
-                <h3>1. El valor presente representa el dinero actual de una cantidad futura.</h3>
-                <label><input type="radio" name="p1" value="v"> Verdadero</label>
-                <label><input type="radio" name="p1" value="f"> Falso</label>
+            <div class="progresoContenedor">
+                <div class="progresoTexto">
+                    <span id="lblProgreso">0 de 5 respondidas</span>
+                    <span id="lblPorcentajeProgreso">0%</span>
+                </div>
+                <div class="barraFondo">
+                    <div class="barraRelleno" id="barraProgreso"></div>
+                </div>
             </div>
 
-            <div class="pregunta">
-                <h3>2. El valor futuro calcula cuánto dinero habrá en el futuro.</h3>
-                <label><input type="radio" name="p2" value="v"> Verdadero</label>
-                <label><input type="radio" name="p2" value="f"> Falso</label>
-            </div>
-
-            <div class="pregunta">
-                <h3>3. En el interés simple, los intereses se calculan solo sobre el capital inicial.</h3>
-                <label><input type="radio" name="p3" value="v"> Verdadero</label>
-                <label><input type="radio" name="p3" value="f"> Falso</label>
-            </div>
-
-            <div class="pregunta">
-                <h3>4. En el interés compuesto, los intereses generan nuevos intereses.</h3>
-                <label><input type="radio" name="p4" value="v"> Verdadero</label>
-                <label><input type="radio" name="p4" value="f"> Falso</label>
-            </div>
-
-            <div class="pregunta">
-                <h3>5. En la amortización alemana las cuotas aumentan cada mes.</h3>
-                <label><input type="radio" name="p5" value="v"> Verdadero</label>
-                <label><input type="radio" name="p5" value="f"> Falso</label>
-            </div>
+            <div id="contenedorPreguntas"></div>
 
             <button class="btn" onclick="calificar()">Calificar</button>
+
             <div id="resultado"></div>
+
+            <button class="btnReiniciar" id="btnReiniciar"
+                    onclick="reiniciarTest()" style="display:none">
+                🔄 Reiniciar Test
+            </button>
         </div>
     </section>
 
