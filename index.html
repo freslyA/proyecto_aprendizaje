@@ -27,6 +27,7 @@
         <button onclick="mostrarSeccion('seccion6')">Tabla de Amortización Francesa</button>
         <button onclick="mostrarSeccion('seccion7')">Tabla de Amortización Alemana</button>
         <button onclick="mostrarSeccion('test')">Test</button>
+        <button onclick="mostrarSeccion('clientes')">Clientes</button>
     </div>
 
     <!-- ===== TITULO ===== -->
@@ -813,6 +814,60 @@ for(let i = 1; i <= cuotas; i++){
                     onclick="reiniciarTest()" style="display:none">
                 🔄 Reiniciar Test
             </button>
+        </div>
+    </section>
+
+    <!-- Clientes y evaluacion de credito -->
+    <section id="clientes">
+        <div class="tarjeta">
+            <h2>Registro de Clientes</h2>
+
+            <!-- DATOS PERSONALES -->
+            <h3 class="subtitulo">Datos Personales</h3>
+            <div class="grupoCredito">
+                <div class="columnaCredito">
+                    <label>Nombre</label>
+                    <input type="text" id="txtNombre" placeholder="Ej: Juan">
+                    <label>Apellido</label>
+                    <input type="text" id="txtApellido" placeholder="Ej: Pérez">
+                    <label>Cédula</label>
+                    <input type="text" id="txtCedula" placeholder="Ej: 1712345678">
+                </div>
+                <div class="columnaCredito">
+                    <label>Teléfono</label>
+                    <input type="text" id="txtTelefono" placeholder="Ej: 0999999999">
+                    <label>Correo</label>
+                    <input type="email" id="txtCorreo" placeholder="Ej: juan@email.com">
+                </div>
+            </div>
+
+            <!-- DATOS FINANCIEROS -->
+            <h3 class="subtitulo">Información Financiera</h3>
+            <div class="grupoCredito">
+                <div class="columnaCredito">
+                    <label>Ingreso mensual ($)</label>
+                    <input type="number" id="txtIngreso" placeholder="Ej: 2200">
+                    <label>Egresos mensuales ($)</label>
+                    <input type="number" id="txtEgreso" placeholder="Ej: 900">
+                </div>
+                <div class="columnaCredito">
+                    <label>Valor del crédito ($)</label>
+                    <input type="number" id="txtMonto" placeholder="Ej: 12000">
+                    <label>Número de cuotas</label>
+                    <input type="number" id="txtCuotasC" placeholder="Ej: 36">
+                    <label>Tasa de interés anual (%)</label>
+                    <input type="number" id="txtTasaC" placeholder="Ej: 12">
+                </div>
+            </div>
+
+            <input type="hidden" id="txtIndiceEditar" value="-1">
+
+            <button class="btnComparar" onclick="guardarCliente()">
+                Guardar Cliente
+            </button>
+
+            <div id="mensajeCliente" style="margin-top:10px"></div>
+            <div id="listaClientes" style="margin-top:25px"></div>
         </div>
     </section>
 

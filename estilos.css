@@ -759,3 +759,223 @@ section{
     background: #38bdf8;
     color: black;
 }
+
+/* ===== CLIENTES ===== */
+
+.mensajeExito {
+    background: rgba(74, 222, 128, 0.1);
+    border-left: 4px solid #4ade80;
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #4ade80;
+    font-size: 14px;
+}
+
+.mensajeError {
+    background: rgba(248, 113, 113, 0.1);
+    border-left: 4px solid #f87171;
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #f87171;
+    font-size: 14px;
+}
+
+.btnAccion {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btnEditar {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid #38bdf8;
+}
+
+.btnEditar:hover {
+    background: #38bdf8;
+    color: black;
+}
+
+.btnEliminar {
+    background: rgba(248, 113, 113, 0.15);
+    color: #f87171;
+    border: 1px solid #f87171;
+}
+
+.btnEliminar:hover {
+    background: #f87171;
+    color: white;
+}
+
+/* ===== EVALUACIÓN CREDITICIA ===== */
+
+.grupoCredito {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.columnaCredito {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.columnaCredito label {
+    color: #38bdf8;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.columnaCredito input {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.columnaCredito input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* Encabezado cliente */
+.encabezadoCliente {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(56, 189, 248, 0.07);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 15px;
+    padding: 16px 20px;
+}
+
+.inicialCliente {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #38bdf8;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.nombreCliente {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.cedulaCliente {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-top: 3px;
+}
+
+/* Grid resumen */
+.gridResumen {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 5px;
+}
+
+.cajaResumen {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.cajaLabel {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.cajaValor {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.cajaValor.verde { color: #4ade80; }
+.cajaValor.rojo  { color: #f87171; }
+.cajaValor.azul  { color: #38bdf8; }
+
+/* Estado aprobado / rechazado */
+.estadoAprobado,
+.estadoRechazado {
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+}
+
+.estadoAprobado {
+    background: rgba(74, 222, 128, 0.08);
+    border: 2px solid #4ade80;
+}
+
+.estadoRechazado {
+    background: rgba(248, 113, 113, 0.08);
+    border: 2px solid #f87171;
+}
+
+.estadoIcono {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+.estadoTitulo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.estadoAprobado .estadoTitulo { color: #4ade80; }
+.estadoRechazado .estadoTitulo { color: #f87171; }
+
+.estadoSubtitulo {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .gridResumen {
+        grid-template-columns: 1fr;
+    }
+}
+
+.btnDetalle {
+    background: rgba(74, 222, 128, 0.12);
+    color: #4ade80;
+    border: 1px solid #4ade80;
+    margin-top: 5px;
+}
+
+.btnDetalle:hover {
+    background: #4ade80;
+    color: black;
+}
