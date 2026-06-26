@@ -1160,3 +1160,284 @@ function generarTablaAlemana() {
         "</div>"
     );
 }
+
+// ===== CLIENTES FUNCIONES DE SIMULADOR DE CREDITO 2 =====
+
+
+let clientes = [];
+
+function guardarCliente() {
+    let nombre    = recuperaraTexto("txtNombre").trim();
+    let apellido  = recuperaraTexto("txtApellido").trim();
+    let cedula    = recuperaraTexto("txtCedula").trim();
+    let telefono  = recuperaraTexto("txtTelefono").trim();
+    let correo    = recuperaraTexto("txtCorreo").trim();
+    let ingreso   = recuperarFloat("txtIngreso");
+    let egreso    = recuperarFloat("txtEgreso");
+    let monto     = recuperarFloat("txtMonto");
+    let cuotas    = recuperarFloat("txtCuotasC");
+    let tasaAnual = recuperarFloat("txtTasaC") / 100;
+    let tasa      = tasaAnual / 12;
+    let indice    = parseInt(document.getElementById("txtIndiceEditar").value);
+
+    // Validación datos personales
+    if (!nombre || !apellido || !cedula || !telefono || !correo) {
+        mostrarHTML("mensajeCliente",
+            "<div class='mensajeError'>⚠️ Por favor completa todos los datos personales.</div>"
+        );
+        return;
+    }
+
+    // Validación datos financieros
+    if (isNaN(ingreso) || isNaN(egreso) || isNaN(monto) ||
+        isNaN(cuotas)  || isNaN(tasaAnual) ||
+        ingreso <= 0   || monto <= 0 || cuotas <= 0) {
+        mostrarHTML("mensajeCliente",
+            "<div class='mensajeError'>⚠️ Por favor completa todos los datos financieros.</div>"
+        );
+        return;
+    }
+
+    if (egreso >= ingreso) {
+        mostrarHTML("mensajeCliente",
+            "<div class='mensajeError'>⚠️ Los egresos no pueden ser mayores o iguales al ingreso.</div>"
+        );
+        return;
+    }
+
+    // Cálculo evaluación crediticia
+    let capacidad     = ingreso - egreso;
+    let limiteMaximo  = ingreso * 0.40;
+
+    let cuotaMensual;
+    if (tasa === 0) {
+        cuotaMensual = monto / cuotas;
+    } else {
+        cuotaMensual = monto * (tasa * Math.pow(1 + tasa, cuotas)) /
+                       (Math.pow(1 + tasa, cuotas) - 1);
+    }
+
+    let totalPagar    = cuotaMensual * cuotas;
+    let totalInteres  = totalPagar - monto;
+    let aprobado      = cuotaMensual <= limiteMaximo && cuotaMensual <= capacidad;
+    let porcentajeUso = Math.round((cuotaMensual / ingreso) * 100);
+
+    let cliente = {
+        nombre, apellido, cedula, telefono, correo,
+        ingreso, egreso, monto, cuotas, tasaAnual,
+        capacidad, limiteMaximo, cuotaMensual,
+        totalPagar, totalInteres, aprobado, porcentajeUso
+    };
+
+    if (indice === -1) {
+        clientes.push(cliente);
+        mostrarHTML("mensajeCliente",
+            "<div class='mensajeExito'>✅ Cliente registrado y evaluado correctamente.</div>"
+        );
+    } else {
+        clientes[indice] = cliente;
+        document.getElementById("txtIndiceEditar").value = -1;
+        let btn = document.querySelector("#clientes .btnComparar");
+        if (btn) btn.innerText = "Guardar Cliente";
+        mostrarHTML("mensajeCliente",
+            "<div class='mensajeExito'>✅ Cliente actualizado correctamente.</div>"
+        );
+    }
+
+    limpiarFormCliente();
+    mostrarClientes();
+
+    setTimeout(function() {
+        mostrarHTML("mensajeCliente", "");
+    }, 3000);
+}
+
+function limpiarFormCliente() {
+    mostrarTextoEnCaja("txtNombre",   "");
+    mostrarTextoEnCaja("txtApellido", "");
+    mostrarTextoEnCaja("txtCedula",   "");
+    mostrarTextoEnCaja("txtTelefono", "");
+    mostrarTextoEnCaja("txtCorreo",   "");
+    mostrarTextoEnCaja("txtIngreso",  "");
+    mostrarTextoEnCaja("txtEgreso",   "");
+    mostrarTextoEnCaja("txtMonto",    "");
+    mostrarTextoEnCaja("txtCuotasC",  "");
+    mostrarTextoEnCaja("txtTasaC",    "");
+    document.getElementById("txtIndiceEditar").value = -1;
+    let btn = document.querySelector("#clientes .btnComparar");
+    if (btn) btn.innerText = "Guardar Cliente";
+}
+
+function editarCliente(indice) {
+    let c = clientes[indice];
+    mostrarTextoEnCaja("txtNombre",   c.nombre);
+    mostrarTextoEnCaja("txtApellido", c.apellido);
+    mostrarTextoEnCaja("txtCedula",   c.cedula);
+    mostrarTextoEnCaja("txtTelefono", c.telefono);
+    mostrarTextoEnCaja("txtCorreo",   c.correo);
+    mostrarTextoEnCaja("txtIngreso",  c.ingreso);
+    mostrarTextoEnCaja("txtEgreso",   c.egreso);
+    mostrarTextoEnCaja("txtMonto",    c.monto);
+    mostrarTextoEnCaja("txtCuotasC",  c.cuotas);
+    mostrarTextoEnCaja("txtTasaC",    (c.tasaAnual * 100));
+    document.getElementById("txtIndiceEditar").value = indice;
+    let btn = document.querySelector("#clientes .btnComparar");
+    if (btn) btn.innerText = "Actualizar Cliente";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function eliminarCliente(indice) {
+    clientes.splice(indice, 1);
+    mostrarClientes();
+}
+
+function mostrarClientes() {
+    if (clientes.length === 0) {
+        mostrarHTML("listaClientes",
+            "<p style='color:#94a3b8;text-align:center'>No hay clientes registrados.</p>"
+        );
+        return;
+    }
+
+    let filas = "";
+    for (let i = 0; i < clientes.length; i++) {
+        let c          = clientes[i];
+        let colorEstado = c.aprobado ? "#4ade80" : "#f87171";
+        let iconoEstado = c.aprobado ? "✅" : "❌";
+        let textoEstado = c.aprobado ? "Aprobado" : "Rechazado";
+
+        filas +=
+            "<tr>" +
+                "<td>" + (i + 1) + "</td>" +
+                "<td>" + c.nombre + " " + c.apellido + "</td>" +
+                "<td>" + c.cedula + "</td>" +
+                "<td>$" + c.ingreso.toFixed(2) + "</td>" +
+                "<td>$" + c.egreso.toFixed(2) + "</td>" +
+                "<td>$" + c.capacidad.toFixed(2) + "</td>" +
+                "<td>$" + c.monto.toFixed(2) + "</td>" +
+                "<td>$" + c.cuotaMensual.toFixed(2) + "</td>" +
+                "<td>" + c.porcentajeUso + "%</td>" +
+                "<td style='color:" + colorEstado + ";font-weight:bold'>" +
+                    iconoEstado + " " + textoEstado +
+                "</td>" +
+                "<td>" +
+                    "<button class='btnAccion btnEditar' " +
+                    "onclick='editarCliente(" + i + ")'>✏️ Editar</button> " +
+                    "<button class='btnAccion btnEliminar' " +
+                    "onclick='eliminarCliente(" + i + ")'>🗑️ Eliminar</button>" +
+                    "<button class='btnAccion btnDetalle' " +
+                    "onclick='verDetalle(" + i + ")'>🔍 Detalle</button>" +
+                "</td>" +
+            "</tr>";
+    }
+
+    mostrarHTML("listaClientes",
+        "<h3 style='color:#38bdf8;margin-bottom:15px'>👥 Clientes: " + clientes.length + "</h3>" +
+        "<div class='tablaContenedor'>" +
+            "<table class='tablaAmortizacion'>" +
+                "<thead>" +
+                    "<tr>" +
+                        "<th>#</th>" +
+                        "<th>Cliente</th>" +
+                        "<th>Cédula</th>" +
+                        "<th>Ingresos</th>" +
+                        "<th>Egresos</th>" +
+                        "<th>Capacidad</th>" +
+                        "<th>Crédito</th>" +
+                        "<th>Cuota</th>" +
+                        "<th>% Ingreso</th>" +
+                        "<th>Estado</th>" +
+                        "<th>Acciones</th>" +
+                    "</tr>" +
+                "</thead>" +
+                "<tbody>" + filas + "</tbody>" +
+            "</table>" +
+        "</div>" +
+        "<div id='detalleCliente' style='margin-top:20px'></div>"
+    );
+}
+
+function verDetalle(indice) {
+    let c          = clientes[indice];
+    let colorEstado = c.aprobado ? "#4ade80" : "#f87171";
+    let colorBarra  = c.aprobado ? "#4ade80" : "#f87171";
+    let barra       = Math.min(c.porcentajeUso, 100);
+
+    let estadoHTML = c.aprobado
+        ? "<div class='estadoAprobado'>" +
+              "<div class='estadoIcono'>✅</div>" +
+              "<div class='estadoTitulo'>CRÉDITO APROBADO</div>" +
+              "<div class='estadoSubtitulo'>El cliente cumple con los requisitos financieros</div>" +
+          "</div>"
+        : "<div class='estadoRechazado'>" +
+              "<div class='estadoIcono'>❌</div>" +
+              "<div class='estadoTitulo'>CRÉDITO RECHAZADO</div>" +
+              "<div class='estadoSubtitulo'>La cuota supera la capacidad de pago permitida</div>" +
+          "</div>";
+
+    mostrarHTML("detalleCliente",
+        "<h3 style='color:#38bdf8;margin-bottom:15px'>🔍 Detalle del Cliente</h3>" +
+
+        "<div class='encabezadoCliente'>" +
+            "<div class='inicialCliente'>" + c.nombre.charAt(0).toUpperCase() + "</div>" +
+            "<div>" +
+                "<div class='nombreCliente'>" + c.nombre + " " + c.apellido + "</div>" +
+                "<div class='cedulaCliente'>CI: " + c.cedula +
+                " &nbsp;|&nbsp; " + c.telefono +
+                " &nbsp;|&nbsp; " + c.correo + "</div>" +
+            "</div>" +
+        "</div>" +
+
+        "<h3 style='color:#38bdf8;margin:20px 0 12px'>📊 Análisis Financiero</h3>" +
+        "<div class='gridResumen'>" +
+            "<div class='cajaResumen'>" +
+                "<span class='cajaLabel'>Ingreso mensual</span>" +
+                "<span class='cajaValor verde'>$" + c.ingreso.toFixed(2) + "</span>" +
+            "</div>" +
+            "<div class='cajaResumen'>" +
+                "<span class='cajaLabel'>Egresos mensuales</span>" +
+                "<span class='cajaValor rojo'>$" + c.egreso.toFixed(2) + "</span>" +
+            "</div>" +
+            "<div class='cajaResumen'>" +
+                "<span class='cajaLabel'>Capacidad de pago</span>" +
+                "<span class='cajaValor azul'>$" + c.capacidad.toFixed(2) + "</span>" +
+            "</div>" +
+            "<div class='cajaResumen'>" +
+                "<span class='cajaLabel'>Límite 40% ingresos</span>" +
+                "<span class='cajaValor'>$" + c.limiteMaximo.toFixed(2) + "</span>" +
+            "</div>" +
+        "</div>" +
+
+        "<h3 style='color:#38bdf8;margin:20px 0 12px'>💳 Detalle del Crédito</h3>" +
+        "<div class='filaResultado'>" +
+            "<span>Monto solicitado:</span>" +
+            "<strong>$" + c.monto.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Cuota mensual:</span>" +
+            "<strong>$" + c.cuotaMensual.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Total intereses:</span>" +
+            "<strong style='color:#f87171'>$" + c.totalInteres.toFixed(2) + "</strong>" +
+        "</div>" +
+        "<div class='filaResultado'>" +
+            "<span>Total a pagar:</span>" +
+            "<strong>$" + c.totalPagar.toFixed(2) + "</strong>" +
+        "</div>" +
+
+        "<h3 style='color:#38bdf8;margin:20px 0 10px'>📈 Compromiso de ingresos</h3>" +
+        "<div class='progresoTexto'>" +
+            "<span>La cuota representa el " + c.porcentajeUso + "% del ingreso</span>" +
+            "<span style='color:" + colorBarra + "'>" + c.porcentajeUso + "%</span>" +
+        "</div>" +
+        "<div class='barraFondo'>" +
+            "<div class='barraRelleno' style='width:" + barra + "%;background:" + colorBarra + "'></div>" +
+        "</div>" +
+        "<p style='font-size:13px;color:#94a3b8;margin-top:6px'>" +
+            "Límite recomendado: 40% del ingreso mensual." +
+        "</p>" +
+
+        "<div style='margin-top:20px'>" + estadoHTML + "</div>"
+    );
+}

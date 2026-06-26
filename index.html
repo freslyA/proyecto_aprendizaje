@@ -27,7 +27,7 @@
         <button onclick="mostrarSeccion('seccion6')">Tabla de Amortización Francesa</button>
         <button onclick="mostrarSeccion('seccion7')">Tabla de Amortización Alemana</button>
         <button onclick="mostrarSeccion('test')">Test</button>
-        <button onclick="mostrarSeccion('calculadoras')">Calculadoras</button>
+        <button onclick="mostrarSeccion('clientes')">Clientes</button>
     </div>
 
     <!-- ===== TITULO ===== -->
@@ -789,78 +789,6 @@ for(let i = 1; i <= cuotas; i++){
         </div>
     </section>
 
-    <!-- ===== CALCULADORAS ===== -->
-    <section id="calculadoras">
-        <div class="tarjeta">
-            <div class="contenedorCalculadoras">
-
-                <div class="tarjetaCalculadora">
-                    <h2>Valor Presente</h2>
-                    <input type="number" id="txtValorFuturoVP" placeholder="Valor Futuro">
-                    <input type="number" id="txtInteresVP" placeholder="Tasa de Interés (%)">
-                    <input type="number" id="txtTiempoVP" placeholder="Tiempo en años">
-                    <button onclick="calcularValorPresente()">Calcular</button>
-                    <p id="lblResultadoVP"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Valor Futuro</h2>
-                    <input type="number" id="txtCapitalInicialVF" placeholder="Capital Inicial">
-                    <input type="number" id="txtInteresVF" placeholder="Tasa de Interés (%)">
-                    <input type="number" id="txtTiempoVF" placeholder="Tiempo en años">
-                    <button onclick="calcularValorFuturo()">Calcular</button>
-                    <p id="lblResultadoVF"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Interés Simple</h2>
-                    <input type="number" id="txtCapitalIS" placeholder="Capital Inicial">
-                    <input type="number" id="txtInteresIS" placeholder="Tasa de Interés (%)">
-                    <input type="number" id="txtTiempoIS" placeholder="Tiempo en años">
-                    <button onclick="calcularInteresSimple()">Calcular</button>
-                    <p id="lblResultadoIS"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Interés Compuesto</h2>
-                    <input type="number" id="txtCapitalIC" placeholder="Capital Inicial">
-                    <input type="number" id="txtInteresIC" placeholder="Tasa de Interés (%)">
-                    <input type="number" id="txtTiempoIC" placeholder="Tiempo en años">
-                    <button onclick="calcularInteresCompuesto()">Calcular</button>
-                    <p id="lblResultadoIC"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Cuotas y Pagos Periódicos</h2>
-                    <input type="number" id="txtPrestamoCPP" placeholder="Monto del préstamo">
-                    <input type="number" id="txtInteresCPP" placeholder="Interés mensual (%)">
-                    <input type="number" id="txtMesesCPP" placeholder="Número de cuotas">
-                    <button onclick="calcularCuotas()">Calcular</button>
-                    <p id="lblResultadoCPP"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Amortización Francesa</h2>
-                    <input type="number" id="txtMontoAF" placeholder="Monto del préstamo">
-                    <input type="number" id="txtInteresAF" placeholder="Interés mensual (%)">
-                    <input type="number" id="txtCuotasAF" placeholder="Número de cuotas">
-                    <button onclick="calcularFrancesa()">Calcular</button>
-                    <p id="lblResultadoAF"></p>
-                </div>
-
-                <div class="tarjetaCalculadora">
-                    <h2>Amortización Alemana</h2>
-                    <input type="number" id="txtMontoAL" placeholder="Monto del préstamo">
-                    <input type="number" id="txtInteresAL" placeholder="Interés mensual (%)">
-                    <input type="number" id="txtCuotasAL" placeholder="Número de cuotas">
-                    <button onclick="calcularAlemana()">Calcular</button>
-                    <p id="lblResultadoAL"></p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
     <!-- ===== TEST ===== -->
    <section id="test">
         <div class="tarjeta">
@@ -886,6 +814,60 @@ for(let i = 1; i <= cuotas; i++){
                     onclick="reiniciarTest()" style="display:none">
                 🔄 Reiniciar Test
             </button>
+        </div>
+    </section>
+
+    <!-- Clientes y evaluacion de credito -->
+    <section id="clientes">
+        <div class="tarjeta">
+            <h2>Registro de Clientes</h2>
+
+            <!-- DATOS PERSONALES -->
+            <h3 class="subtitulo">Datos Personales</h3>
+            <div class="grupoCredito">
+                <div class="columnaCredito">
+                    <label>Nombre</label>
+                    <input type="text" id="txtNombre" placeholder="Ej: Juan">
+                    <label>Apellido</label>
+                    <input type="text" id="txtApellido" placeholder="Ej: Pérez">
+                    <label>Cédula</label>
+                    <input type="text" id="txtCedula" placeholder="Ej: 1712345678">
+                </div>
+                <div class="columnaCredito">
+                    <label>Teléfono</label>
+                    <input type="text" id="txtTelefono" placeholder="Ej: 0999999999">
+                    <label>Correo</label>
+                    <input type="email" id="txtCorreo" placeholder="Ej: juan@email.com">
+                </div>
+            </div>
+
+            <!-- DATOS FINANCIEROS -->
+            <h3 class="subtitulo">Información Financiera</h3>
+            <div class="grupoCredito">
+                <div class="columnaCredito">
+                    <label>Ingreso mensual ($)</label>
+                    <input type="number" id="txtIngreso" placeholder="Ej: 2200">
+                    <label>Egresos mensuales ($)</label>
+                    <input type="number" id="txtEgreso" placeholder="Ej: 900">
+                </div>
+                <div class="columnaCredito">
+                    <label>Valor del crédito ($)</label>
+                    <input type="number" id="txtMonto" placeholder="Ej: 12000">
+                    <label>Número de cuotas</label>
+                    <input type="number" id="txtCuotasC" placeholder="Ej: 36">
+                    <label>Tasa de interés anual (%)</label>
+                    <input type="number" id="txtTasaC" placeholder="Ej: 12">
+                </div>
+            </div>
+
+            <input type="hidden" id="txtIndiceEditar" value="-1">
+
+            <button class="btnComparar" onclick="guardarCliente()">
+                Guardar Cliente
+            </button>
+
+            <div id="mensajeCliente" style="margin-top:10px"></div>
+            <div id="listaClientes" style="margin-top:25px"></div>
         </div>
     </section>
 
